@@ -1,0 +1,62 @@
+<style>
+    .cyber-login-container { min-height: 70vh; display: flex; align-items: center; justify-content: center; }
+    .cyber-card {
+        background: rgba(11, 12, 16, 0.85); border: 2px solid rgba(255, 0, 255, 0.3);
+        border-radius: 15px; padding: 40px; width: 100%; max-width: 450px; position: relative; overflow: hidden;
+    }
+
+    /* FIX PLACEHOLDER CHO TRANG REGISTER */
+    .cyber-input {
+        background: rgba(31, 40, 51, 0.6) !important;
+        border: 1px solid #9d00ff !important;
+        color: #fff !important;
+        padding: 15px 20px; border-radius: 8px; transition: 0.3s;
+    }
+
+    .cyber-input::placeholder {
+        color: rgba(255, 0, 255, 0.7) !important; /* Màu hồng Neon hiện rõ */
+        opacity: 1;
+        font-style: italic;
+    }
+
+    .cyber-input:focus {
+        box-shadow: 0 0 15px rgba(255, 0, 255, 0.4) !important;
+    }
+
+    .cyber-btn {
+        background: linear-gradient(45deg, #00ffff, #ff00ff);
+        border: none; color: #000; font-weight: 800; padding: 15px; border-radius: 8px;
+    }
+</style>
+
+<div class="cyber-login-container">
+    <div class="cyber-card">
+        <div class="text-center mb-4">
+            <i class="bi bi-cpu text-danger display-1" style="filter: drop-shadow(0 0 10px #ff00ff);"></i>
+            <h3 class="text-white mt-3 fw-bold">ĐĂNG KÍ TÀI KHOẢN</h3>
+        </div>
+
+        <form asp-action="Register" method="post">
+            <div class="mb-3 position-relative">
+                <i class="bi bi-person position-absolute top-50 start-0 translate-middle-y ms-3" style="color: #ff00ff;"></i>
+                <input type="text" name="username" class="form-control cyber-input ps-5" placeholder="Nhập tên tài khoản" required>
+            </div>
+
+            <div class="mb-3 position-relative">
+                <i class="bi bi-envelope position-absolute top-50 start-0 translate-middle-y ms-3" style="color: #ff00ff;"></i>
+                <input type="email" name="email" class="form-control cyber-input ps-5" placeholder="Nhập mật khẩu" required>
+            </div>
+            
+            <div class="mb-4 position-relative">
+                <i class="bi bi-shield-lock position-absolute top-50 start-0 translate-middle-y ms-3" style="color: #ff00ff;"></i>
+                <input type="password" name="password" class="form-control cyber-input ps-5" placeholder="Nhập lại mật khẩu" required>
+            </div>
+
+            <button type="submit" class="btn cyber-btn w-100 mb-3">TẠO TÀI KHOẢN MỚI</button>
+            <div class="text-center mt-3 border-top border-secondary pt-3 small">
+                <span class="text-secondary">Bạn đã có tài khoản?</span>
+                <a asp-action="Login" class="text-danger text-decoration-none fw-bold ms-1">Quay lại Đăng nhập</a>
+            </div>
+        </form>
+    </div>
+</div>

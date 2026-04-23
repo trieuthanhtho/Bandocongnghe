@@ -1,0 +1,183 @@
+﻿@{
+    ViewData["Title"] = "Trang chủ";
+}
+
+<style>
+    /* HIỆU ỨNG NEON & DARK MODE */
+    body { background-color: #0b0c10; color: #c5c6c7; }
+    
+    .hero-section {
+        background: radial-gradient(circle at top right, #1f2833, #0b0c10);
+        padding: 6rem 0;
+        border-radius: 15px;
+        margin-top: 1rem;
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(102, 252, 241, 0.1);
+        box-shadow: 0 0 40px rgba(102, 252, 241, 0.05);
+    }
+
+    .hero-title {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 900;
+        font-size: 3.5rem;
+        line-height: 1.2;
+        margin-bottom: 1.5rem;
+        color: #ffffff;
+    }
+
+    /* Chữ phát sáng nhiều màu */
+    .text-gradient {
+        background: linear-gradient(to right, #66fcf1, #45a29e, #9d00ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: hueRotate 5s infinite linear;
+    }
+
+
+@@keyframes hueRotate {
+    0% { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(360deg); }
+}
+
+    .hero-subtitle {
+        font-family: 'Roboto', sans-serif;
+        font-size: 1.1rem;
+        color: #8b929a;
+        margin-bottom: 2rem;
+        max-width: 600px;
+    }
+
+    .btn-hero {
+        background: linear-gradient(45deg, #66fcf1, #45a29e);
+        color: #0b0c10;
+        font-weight: 800;
+        text-transform: uppercase;
+        padding: 1rem 2.5rem;
+        border-radius: 50px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 0 15px rgba(102, 252, 241, 0.4);
+        display: inline-block;
+        border: none;
+    }
+
+    .btn-hero:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 0 30px rgba(102, 252, 241, 0.7);
+        color: #000;
+    }
+
+    .section-title {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 800;
+        font-size: 2.2rem;
+        color: #ffffff;
+        margin-bottom: 1.5rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    /* Khối tính năng dạng Glassmorphism (Kính mờ) */
+    .feature-box {
+        text-align: center;
+        padding: 2.5rem 1.5rem;
+        border-radius: 15px;
+        background: rgba(31, 40, 51, 0.5);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        transition: all 0.4s ease;
+        height: 100%;
+    }
+
+    .feature-box:hover {
+        transform: translateY(-10px);
+        border-color: #66fcf1;
+        box-shadow: 0 15px 30px rgba(102, 252, 241, 0.15);
+        background: rgba(31, 40, 51, 0.8);
+    }
+
+    .feature-icon {
+        font-size: 3rem;
+        background: linear-gradient(45deg, #66fcf1, #9d00ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 1.2rem;
+    }
+
+    .feature-title {
+        color: #ffffff;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+    }
+</style>
+
+<div class="container mt-4">
+    <div class="hero-section px-4 px-md-5 text-center text-md-start mb-5">
+        <div class="row align-items-center">
+            <div class="col-md-6 mb-4 mb-md-0 z-1">
+                <span class="badge bg-dark border border-secondary text-light mb-3 px-3 py-2 rounded-pill"><i class="bi bi-lightning-charge-fill text-warning"></i> Thế hệ mới 2026</span>
+                <h1 class="hero-title">Định Hình<br><span class="text-gradient">Tương Lai</span> Công Nghệ.</h1>
+                <p class="hero-subtitle">Chào mừng bạn đến với Thanhtho Corporation. Khám phá các thiết bị thông minh, hiệu năng cao và giải pháp công nghệ dẫn đầu xu hướng.</p>
+                <a asp-area="" asp-controller="Home" asp-action="SanPham" class="btn-hero"><i class="bi bi-rocket-takeoff me-2"></i> Khám phá cửa hàng</a>
+            </div>
+            <div class="col-md-6 text-center z-1 position-relative">
+                <div class="position-absolute top-50 start-50 translate-middle w-75 h-75 bg-info opacity-25 rounded-circle blur-lg" style="filter: blur(50px);"></div>
+                <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=800&auto=format&fit=crop" class="img-fluid rounded-4 shadow-lg position-relative" alt="Công nghệ hiện đại" style="max-height: 450px; object-fit: cover; border: 2px solid rgba(255,255,255,0.1);">
+            </div>
+        </div>
+    </div>
+
+    <div class="about-section py-5">
+        <div class="row align-items-center">
+            <div class="col-lg-5 mb-5 mb-lg-0">
+                <h2 class="section-title">Về Thanhtho<span style="color: #66fcf1;">_</span></h2>
+                <p class="text-secondary fs-5 mb-4" style="line-height: 1.8;">
+                    Được thành lập với sứ mệnh mang công nghệ đỉnh cao đến gần hơn với người dùng, <strong class="text-light">Thanhtho Corporation</strong> tự hào là hệ thống phân phối thiết bị điện tử Gaming & Workstation hàng đầu.
+                </p>
+                <div class="d-flex gap-3 mb-4">
+                    <div class="text-center p-3 border border-secondary rounded-3 bg-dark">
+                        <h3 class="text-gradient fw-bold mb-0">10K+</h3>
+                        <span class="small text-muted">Khách hàng</span>
+                    </div>
+                    <div class="text-center p-3 border border-secondary rounded-3 bg-dark">
+                        <h3 class="text-gradient fw-bold mb-0">100%</h3>
+                        <span class="small text-muted">Chính hãng</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 offset-lg-1">
+                <div class="row g-4">
+                    <div class="col-sm-6">
+                        <div class="feature-box">
+                            <i class="bi bi-rocket-takeoff feature-icon"></i>
+                            <h4 class="feature-title">Giao Hỏa Tốc</h4>
+                            <p class="text-secondary small mb-0">Miễn phí vận chuyển toàn quốc cho đơn hàng trên 5.000.000đ.</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="feature-box">
+                            <i class="bi bi-shield-check feature-icon"></i>
+                            <h4 class="feature-title">Bảo Hành VIP</h4>
+                            <p class="text-secondary small mb-0">Cam kết 100% hàng chính hãng. Bảo hành tận nhà 24 tháng.</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="feature-box">
+                            <i class="bi bi-arrow-repeat feature-icon"></i>
+                            <h4 class="feature-title">1 Đổi 1 Dễ Dàng</h4>
+                            <p class="text-secondary small mb-0">Lỗi là đổi mới trong vòng 30 ngày, thủ tục trong 5 phút.</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="feature-box">
+                            <i class="bi bi-headset feature-icon"></i>
+                            <h4 class="feature-title">Support 24/7</h4>
+                            <p class="text-secondary small mb-0">Đội ngũ kỹ thuật IT chuyên nghiệp luôn sẵn sàng hỗ trợ.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

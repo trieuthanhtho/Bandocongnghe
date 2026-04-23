@@ -1,0 +1,412 @@
+@{
+    ViewData["Title"] = "Sản Phẩm Công Nghệ";
+
+    // 1. DỮ LIỆU LAPTOP
+    var laptops = new[] {
+        new { Name = "MacBook Pro M3 Max", Specs = "Apple M3 Max | 36GB RAM | 1TB SSD", Price = "79.990.000₫", Badge = "HOT", Img = "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=400&auto=format&fit=crop" },
+        new { Name = "ASUS ROG Strix SCAR 18", Specs = "Core i9 14900HX | RTX 4090 | 64GB", Price = "109.990.000₫", Badge = "GAMING", Img = "https://images.unsplash.com/photo-1603302576837-37561b2e2302?q=80&w=400&auto=format&fit=crop" },
+        new { Name = "Dell XPS 15 9530", Specs = "Core i7 13700H | 16GB RAM | OLED", Price = "45.500.000₫", Badge = "", Img = "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?q=80&w=400&auto=format&fit=crop" },
+        new { Name = "Lenovo ThinkPad X1", Specs = "Core Ultra 7 | 32GB RAM | 512GB", Price = "52.000.000₫", Badge = "NEW", Img = "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?q=80&w=400&auto=format&fit=crop" },
+        new { Name = "Acer Predator Helios", Specs = "Core i7 13700HX | RTX 4070 | 16GB", Price = "38.990.000₫", Badge = "-15%", Img = "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?q=80&w=400&auto=format&fit=crop" },
+        new { Name = "MSI Stealth 16 Studio", Specs = "Core i9 | RTX 4060 | Màn 240Hz", Price = "41.990.000₫", Badge = "", Img = "https://images.unsplash.com/photo-1531297172868-ee1cb88f2402?q=80&w=400&auto=format&fit=crop" }
+    };
+
+    // 2. DỮ LIỆU PC & WORKSTATION
+    var pcs = new[] {
+        new { Name = "PC AI Master Build", Specs = "Ryzen 9 7950X | 64GB RAM | 2TB SSD", Price = "62.000.000₫", Badge = "AI READY", Img = "https://images.unsplash.com/photo-1587831990711-23ca6441447b?q=80&w=400&auto=format&fit=crop" },
+        new { Name = "Apple Mac Studio", Specs = "M2 Ultra | 64GB Unified | 1TB SSD", Price = "99.990.000₫", Badge = "PRO", Img = "https://images.unsplash.com/photo-1622286342621-4bd786c2447c?q=80&w=400&auto=format&fit=crop" },
+        new { Name = "PC Gaming Infinity", Specs = "Core i9 14900K | RTX 4080 Super", Price = "85.500.000₫", Badge = "HOT", Img = "https://images.unsplash.com/photo-1563298723-dcfebaa392e3?q=80&w=400&auto=format&fit=crop" },
+        new { Name = "Workstation HP Z8", Specs = "Dual Xeon Gold | 128GB RAM", Price = "145.000.000₫", Badge = "", Img = "https://images.unsplash.com/photo-1547082299-de196ea013d6?q=80&w=400&auto=format&fit=crop" },
+        new { Name = "NZXT Player: Three", Specs = "Ryzen 7 7800X3D | RTX 4070 Ti", Price = "55.000.000₫", Badge = "-10%", Img = "https://images.unsplash.com/photo-1555680202-c86f0e12f086?q=80&w=400&auto=format&fit=crop" },
+        new { Name = "Mini PC Intel NUC 13", Specs = "Core i9 13900K | Hỗ trợ VGA rời", Price = "32.000.000₫", Badge = "NEW", Img = "https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?q=80&w=400&auto=format&fit=crop" }
+    };
+
+    // 3. DỮ LIỆU ĐIỆN THOẠI & TABLET
+    var phones = new[] {
+        new { Name = "iPhone 15 Pro Max", Specs = "Titanium | 256GB | A17 Pro", Price = "29.500.000₫", Badge = "BEST SELLER", Img = "https://images.unsplash.com/photo-1696446701796-da61225697cc?q=80&w=400&auto=format&fit=crop" },
+        new { Name = "Galaxy S24 Ultra", Specs = "Galaxy AI | 512GB | Snap 8 Gen 3", Price = "31.990.000₫", Badge = "HOT", Img = "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?q=80&w=400&auto=format&fit=crop" },
+        new { Name = "iPad Pro M4 2026", Specs = "OLED 13-inch | 256GB | Wifi", Price = "28.990.000₫", Badge = "NEW", Img = "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?q=80&w=400&auto=format&fit=crop" },
+        new { Name = "Xiaomi 14 Ultra", Specs = "Camera Leica | 16GB RAM", Price = "24.990.000₫", Badge = "", Img = "https://images.unsplash.com/photo-1598327105666-5b89351aff97?q=80&w=400&auto=format&fit=crop" },
+        new { Name = "Galaxy Z Fold 5", Specs = "Màn gập 7.6-inch | 512GB", Price = "35.000.000₫", Badge = "-20%", Img = "https://images.unsplash.com/photo-1631585489816-c3f3f01c7138?q=80&w=400&auto=format&fit=crop" },
+        new { Name = "ROG Phone 8 Pro", Specs = "Màn 165Hz | 24GB RAM | Tản nhiệt", Price = "26.500.000₫", Badge = "GAMING", Img = "https://images.unsplash.com/photo-1605236453806-6ff36851218e?q=80&w=400&auto=format&fit=crop" }
+    };
+
+    // 4. DỮ LIỆU GAMING GEAR
+    var gears = new[] {
+        new { Name = "Chuột Logitech G Pro X 2", Specs = "Superlight | 60g | Sensor Hero 2", Price = "3.200.000₫", Badge = "TOP 1", Img = "https://images.unsplash.com/photo-1605773527852-c546a8584ea3?q=80&w=400&auto=format&fit=crop" },
+        new { Name = "Phím Razer BlackWidow V4", Specs = "Switch Green | LED Chroma", Price = "4.500.000₫", Badge = "", Img = "https://images.unsplash.com/photo-1595225476474-87563907a212?q=80&w=400&auto=format&fit=crop" },
+        new { Name = "Tai nghe HyperX Cloud III", Specs = "Wireless | Pin 120h | DTS:X", Price = "3.800.000₫", Badge = "NEW", Img = "https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?q=80&w=400&auto=format&fit=crop" },
+        new { Name = "Màn hình LG OLED 27\"", Specs = "27GR95QE-B | 240Hz | 0.03ms", Price = "18.900.000₫", Badge = "SALE", Img = "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?q=80&w=400&auto=format&fit=crop" },
+        new { Name = "Tay cầm Xbox Elite V2", Specs = "Wireless | Bluetooth | Pin sạc", Price = "3.500.000₫", Badge = "", Img = "https://images.unsplash.com/photo-1600080972464-8e5f35f63d08?q=80&w=400&auto=format&fit=crop" },
+        new { Name = "Mic Elgato Wave:3", Specs = "USB Condenser | Clipguard", Price = "3.600.000₫", Badge = "STREAM", Img = "https://images.unsplash.com/photo-1585800479155-23c28b5e67c9?q=80&w=400&auto=format&fit=crop" }
+    };
+
+    // 5. DỮ LIỆU LINH KIỆN
+    var components = new[] {
+        new { Name = "VGA RTX 4090 24GB", Specs = "NVIDIA Ada Lovelace | DLSS 3", Price = "55.000.000₫", Badge = "FLAGSHIP", Img = "https://images.unsplash.com/photo-1591488320449-011701bb6704?q=80&w=400&auto=format&fit=crop" },
+        new { Name = "CPU Core i9-14900K", Specs = "24 Nhân | 32 Luồng | 6.0 GHz", Price = "14.500.000₫", Badge = "HOT", Img = "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?q=80&w=400&auto=format&fit=crop" },
+        new { Name = "Mainboard ASUS ROG Z790", Specs = "Maximus Hero | DDR5 | PCIe 5.0", Price = "16.200.000₫", Badge = "", Img = "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=400&auto=format&fit=crop" },
+        new { Name = "RAM Corsair Dominator", Specs = "64GB (2x32) | DDR5 6000MHz", Price = "7.800.000₫", Badge = "NEW", Img = "https://images.unsplash.com/photo-1562976540-1502c2145186?q=80&w=400&auto=format&fit=crop" },
+        new { Name = "SSD Samsung 990 Pro", Specs = "2TB | NVMe M.2 | Đọc 7450MB/s", Price = "4.500.000₫", Badge = "-10%", Img = "https://images.unsplash.com/photo-1628557044797-f21a177c37ec?q=80&w=400&auto=format&fit=crop" },
+        new { Name = "Tản AIO NZXT Kraken", Specs = "Elite 360 RGB | Màn hình LCD", Price = "6.900.000₫", Badge = "", Img = "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?q=80&w=400&auto=format&fit=crop" }
+    };
+}
+
+<style>
+    body { background-color: #0b0c10; }
+    
+    .tech-banner {
+        position: relative;
+        background: linear-gradient(135deg, #1f2833, #0b0c10, #45a29e);
+        color: white;
+        border-radius: 15px;
+        overflow: hidden;
+        border: 1px solid rgba(102, 252, 241, 0.2);
+    }
+    
+    .tech-card {
+        background-color: #1f2833;
+        transition: all 0.4s ease;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 12px;
+        overflow: hidden;
+    }
+    
+    .tech-card .card-title { color: #ffffff !important; font-size: 1.05rem; }
+    
+    .tech-card:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 0 15px 30px rgba(102, 252, 241, 0.2);
+        border-color: #66fcf1;
+        z-index: 10;
+    }
+
+    .tech-card img {
+        background-color: #ffffff;
+        border-bottom: 2px solid #333;
+        height: 220px; 
+        object-fit: cover;
+    }
+
+    .sidebar-menu .nav-link {
+        background-color: transparent;
+        color: #c5c6c7;
+        border: none;
+        border-radius: 0;
+        border-left: 3px solid transparent;
+        transition: all 0.2s ease;
+        padding: 15px 20px;
+        text-align: left;
+        width: 100%;
+        cursor: pointer;
+    }
+    
+    .sidebar-menu .nav-link:hover, 
+    .sidebar-menu .nav-link.active {
+        background-color: rgba(102, 252, 241, 0.1);
+        border-left: 3px solid #66fcf1;
+        color: #66fcf1;
+        font-weight: bold;
+    }
+
+    .section-title-neon {
+        color: #ffffff;
+        text-transform: uppercase;
+        font-weight: 800;
+        letter-spacing: 2px;
+        text-shadow: 0 0 10px rgba(102, 252, 241, 0.5);
+    }
+    
+    .student-info-block {
+        background: linear-gradient(to top, #0b0c10, #1f2833);
+        border-top: 2px solid #9d00ff;
+    }
+
+    .product-actions {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 8px;
+        margin-top: 15px;
+    }
+    
+    .btn-buy {
+        background: linear-gradient(45deg, #45a29e, #66fcf1);
+        border: none;
+        color: #0b0c10;
+        transition: all 0.3s ease;
+    }
+
+    .btn-buy:hover {
+        background: #66fcf1;
+        box-shadow: 0 0 15px rgba(102, 252, 241, 0.4);
+        transform: translateY(-2px);
+        color: #000;
+    }
+
+    /* ======================================================== */
+    /* HIỆU ỨNG TAB: HOLOGRAPHIC OVERDRIVE (RẤT NGẦU VÀ MÀU MÈ) */
+    /* ======================================================== */
+    
+    /* Vô hiệu hóa fade mặc định */
+    .tab-pane.fade { transition: none !important; }
+    
+    /* Khi tab được gọi lên */
+    .tab-pane.active.show {
+        animation: holoOverdrive 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        transform-origin: center center;
+    }
+
+    @@keyframes holoOverdrive {
+        0% { 
+            opacity: 0; 
+            transform: scale3d(2, 0.1, 1) translateY(-50px) skewX(30deg); 
+            filter: hue-rotate(180deg) saturate(300%) drop-shadow(15px 15px 0px #ff00ff) drop-shadow(-15px -15px 0px #00ffff) blur(10px); 
+        }
+        30% {
+            opacity: 0.8;
+            transform: scale3d(1.1, 1.2, 1) translateY(20px) skewX(-15deg);
+            filter: hue-rotate(90deg) saturate(250%) drop-shadow(5px 5px 0px #ff00ff) drop-shadow(-5px -5px 0px #00ffff) blur(4px);
+        }
+        50% {
+            opacity: 1;
+            transform: scale3d(0.95, 0.95, 1) translateY(-5px) skewX(5deg);
+            filter: hue-rotate(45deg) saturate(150%) blur(1px);
+        }
+        70% {
+            transform: scale3d(1.02, 1.02, 1) translateY(2px) skewX(-2deg);
+            filter: hue-rotate(0deg) saturate(120%);
+        }
+        100% { 
+            opacity: 1; 
+            transform: scale3d(1, 1, 1) translateY(0) skewX(0); 
+            filter: none; 
+        }
+    }
+    /* ======================================================== */
+
+</style>
+
+<div class="container-fluid mt-4">
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="tech-banner d-flex align-items-center" style="min-height: 250px;">
+                <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop" class="position-absolute w-100 h-100 opacity-25" style="object-fit: cover; mix-blend-mode: luminosity;">
+                <div class="position-relative p-5 w-100 text-center text-md-start z-1">
+                    <span class="badge bg-transparent border border-info text-info mb-3 px-4 py-2 fs-6 rounded-pill"><i class="bi bi-stars"></i> TRẠM KHÔNG GIAN IT</span>
+                    <h2 class="display-5 fw-bolder text-white mb-2" style="text-shadow: 2px 2px 4px #000;">KHO VŨ KHÍ CÔNG NGHỆ</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <aside class="col-lg-3 mb-4">
+            <div class="card bg-dark border-secondary mb-4 rounded-4 shadow-lg sticky-top" style="top: 20px; z-index: 100;">
+                <div class="card-header bg-transparent border-bottom border-secondary pt-4 pb-3">
+                    <h5 class="fw-bold text-uppercase text-light mb-0"><i class="bi bi-cpu text-info me-2"></i> Danh Mục Thiết Bị</h5>
+                </div>
+                <div class="card-body p-0 sidebar-menu pb-2">
+                    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                        <button class="nav-link active" id="v-pills-laptop-tab" data-bs-toggle="pill" data-bs-target="#v-pills-laptop" type="button" role="tab" aria-selected="true"><i class="bi bi-laptop me-2"></i> Laptop & Macbook</button>
+                        <button class="nav-link" id="v-pills-pc-tab" data-bs-toggle="pill" data-bs-target="#v-pills-pc" type="button" role="tab" aria-selected="false"><i class="bi bi-pc-display me-2"></i> PC & Workstation</button>
+                        <button class="nav-link" id="v-pills-phone-tab" data-bs-toggle="pill" data-bs-target="#v-pills-phone" type="button" role="tab" aria-selected="false"><i class="bi bi-phone me-2"></i> Điện thoại & Tablet</button>
+                        <button class="nav-link" id="v-pills-gear-tab" data-bs-toggle="pill" data-bs-target="#v-pills-gear" type="button" role="tab" aria-selected="false"><i class="bi bi-mouse me-2"></i> Gaming Gear</button>
+                        <button class="nav-link" id="v-pills-lk-tab" data-bs-toggle="pill" data-bs-target="#v-pills-lk" type="button" role="tab" aria-selected="false"><i class="bi bi-motherboard me-2"></i> Linh kiện máy tính</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card border-0 text-center p-4 shadow-lg d-none d-lg-block rounded-4" style="background: linear-gradient(45deg, #9d00ff, #45a29e);">
+                <i class="bi bi-lightning-charge display-3 text-white mb-2" style="filter: drop-shadow(0 0 10px white);"></i>
+                <h4 class="fw-bold text-white mt-2">FLASH SALE</h4>
+                <p class="text-light opacity-75 mb-4">Giảm đến 30% cho Sinh Viên IT</p>
+                <button class="btn btn-dark w-100 fw-bold rounded-pill border border-light">Săn Code Ngay</button>
+            </div>
+        </aside>
+
+        <main class="col-lg-9">
+            <div class="tab-content" id="v-pills-tabContent">
+                
+                <div class="tab-pane fade show active" id="v-pills-laptop" role="tabpanel">
+                    <h3 class="section-title-neon mb-4"><i class="bi bi-laptop text-info me-2"></i> LAPTOP & MACBOOK</h3>
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4 mb-5">
+                        @foreach (var item in laptops)
+                        {
+                            <div class="col">
+                                <div class="card h-100 tech-card" style="border-color: rgba(13, 202, 240, 0.3);">
+                                    @if(!string.IsNullOrEmpty(item.Badge)) {
+                                        <span class="badge bg-danger position-absolute top-0 end-0 m-3 px-3 py-2 rounded-pill shadow">@item.Badge</span>
+                                    }
+                                    <img src="@item.Img" class="card-img-top p-3" alt="@item.Name">
+                                    <div class="card-body text-center pt-0">
+                                        <h6 class="card-title text-truncate fw-bold">@item.Name</h6>
+                                        <p class="text-secondary small mb-3">@item.Specs</p>
+                                        <h4 class="text-info fw-bold mb-2">@item.Price</h4>
+                                        <div class="product-actions">
+                                            <button class="btn btn-sm btn-outline-info fw-bold" title="Thêm vào giỏ">
+                                                <i class="bi bi-cart-plus"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-buy fw-bold text-uppercase">Mua ngay</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="v-pills-pc" role="tabpanel">
+                    <h3 class="section-title-neon mb-4"><i class="bi bi-pc-display text-success me-2"></i> PC & WORKSTATION</h3>
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4 mb-5">
+                        @foreach (var item in pcs)
+                        {
+                            <div class="col">
+                                <div class="card h-100 tech-card" style="border-color: rgba(25, 135, 84, 0.3);">
+                                    @if(!string.IsNullOrEmpty(item.Badge)) {
+                                        <span class="badge bg-success position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill shadow">@item.Badge</span>
+                                    }
+                                    <img src="@item.Img" class="card-img-top p-3" alt="@item.Name">
+                                    <div class="card-body text-center pt-0">
+                                        <h6 class="card-title text-truncate fw-bold">@item.Name</h6>
+                                        <p class="text-secondary small mb-3">@item.Specs</p>
+                                        <h4 class="text-success fw-bold mb-2">@item.Price</h4>
+                                        <div class="product-actions">
+                                            <button class="btn btn-sm btn-outline-success fw-bold" title="Thêm vào giỏ">
+                                                <i class="bi bi-cart-plus"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-buy fw-bold text-uppercase">Mua ngay</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="v-pills-phone" role="tabpanel">
+                    <h3 class="section-title-neon mb-4"><i class="bi bi-phone text-warning me-2"></i> ĐIỆN THOẠI & TABLET</h3>
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4 mb-5">
+                        @foreach (var item in phones)
+                        {
+                            <div class="col">
+                                <div class="card h-100 tech-card" style="border-color: rgba(255, 193, 7, 0.3);">
+                                    @if(!string.IsNullOrEmpty(item.Badge)) {
+                                        <span class="badge bg-warning text-dark position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill shadow">@item.Badge</span>
+                                    }
+                                    <img src="@item.Img" class="card-img-top p-3" alt="@item.Name">
+                                    <div class="card-body text-center pt-0">
+                                        <h6 class="card-title text-truncate fw-bold">@item.Name</h6>
+                                        <p class="text-secondary small mb-3">@item.Specs</p>
+                                        <h4 class="text-warning fw-bold mb-2">@item.Price</h4>
+                                        <div class="product-actions">
+                                            <button class="btn btn-sm btn-outline-warning fw-bold" title="Thêm vào giỏ">
+                                                <i class="bi bi-cart-plus"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-buy fw-bold text-uppercase">Mua ngay</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="v-pills-gear" role="tabpanel">
+                    <h3 class="section-title-neon mb-4"><i class="bi bi-mouse text-danger me-2"></i> GAMING GEAR</h3>
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4 mb-5">
+                        @foreach (var item in gears)
+                        {
+                            <div class="col">
+                                <div class="card h-100 tech-card" style="border-color: rgba(220, 53, 69, 0.3);">
+                                    @if(!string.IsNullOrEmpty(item.Badge)) {
+                                        <span class="badge bg-danger position-absolute top-0 end-0 m-3 px-3 py-2 rounded-pill shadow">@item.Badge</span>
+                                    }
+                                    <img src="@item.Img" class="card-img-top p-3" alt="@item.Name">
+                                    <div class="card-body text-center pt-0">
+                                        <h6 class="card-title text-truncate fw-bold">@item.Name</h6>
+                                        <p class="text-secondary small mb-3">@item.Specs</p>
+                                        <h4 class="text-danger fw-bold mb-2">@item.Price</h4>
+                                        <div class="product-actions">
+                                            <button class="btn btn-sm btn-outline-danger fw-bold" title="Thêm vào giỏ">
+                                                <i class="bi bi-cart-plus"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-buy fw-bold text-uppercase">Mua ngay</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="v-pills-lk" role="tabpanel">
+                    <h3 class="section-title-neon mb-4"><i class="bi bi-motherboard text-primary me-2"></i> LINH KIỆN MÁY TÍNH</h3>
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4 mb-5">
+                        @foreach (var item in components)
+                        {
+                            <div class="col">
+                                <div class="card h-100 tech-card" style="border-color: rgba(13, 110, 253, 0.3);">
+                                    @if(!string.IsNullOrEmpty(item.Badge)) {
+                                        <span class="badge bg-primary position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill shadow">@item.Badge</span>
+                                    }
+                                    <img src="@item.Img" class="card-img-top p-3" alt="@item.Name">
+                                    <div class="card-body text-center pt-0">
+                                        <h6 class="card-title text-truncate fw-bold">@item.Name</h6>
+                                        <p class="text-secondary small mb-3">@item.Specs</p>
+                                        <h4 class="text-primary fw-bold mb-2">@item.Price</h4>
+                                        <div class="product-actions">
+                                            <button class="btn btn-sm btn-outline-primary fw-bold" title="Thêm vào giỏ">
+                                                <i class="bi bi-cart-plus"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-buy fw-bold text-uppercase">Mua ngay</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+</div>
+
+<div class="container-fluid px-0 mt-5">
+    <div class="student-info-block p-5 rounded-top-5 shadow-lg">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-7 mb-4 mb-md-0">
+                    <h4 class="text-white fw-bold mb-4 text-uppercase"><i class="bi bi-terminal-fill text-info"></i> Thông tin dự án</h4>
+                    <div class="d-flex flex-column gap-3">
+                        <div class="d-flex align-items-center bg-black bg-opacity-50 p-3 rounded-4 border border-secondary border-opacity-25">
+                            <i class="bi bi-person-bounding-box fs-1 text-info me-4"></i>
+                            <div>
+                                <span class="small text-secondary d-block text-uppercase letter-spacing">Sinh viên thực hiện</span>
+                                <strong class="text-white fs-5">Triệu Thanh Tho</strong>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center bg-black bg-opacity-50 p-3 rounded-4 border border-secondary border-opacity-25">
+                            <i class="bi bi-upc-scan fs-1 text-info me-4"></i>
+                            <div>
+                                <span class="small text-secondary d-block text-uppercase letter-spacing">Mã số sinh viên</span>
+                                <strong class="text-white fs-5">243913</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5 text-md-end">
+                    <div class="bg-black bg-opacity-50 p-4 rounded-4 border border-secondary border-opacity-25 h-100">
+                        <h5 class="text-white mb-4"><i class="bi bi-broadcast text-danger me-2"></i>Mạng lưới kết nối</h5>
+                        <p class="mb-2 text-start text-light"><i class="bi bi-envelope text-info me-3"></i> thogoodboy6@gmail.com</p>
+                        <p class="mb-4 text-start text-light"><i class="bi bi-telephone text-info me-3"></i> 033-861-9653</p>
+                        <div class="d-flex justify-content-start justify-content-md-end gap-2 mt-4 pt-3 border-top border-secondary border-opacity-50">
+                            <button class="btn btn-outline-secondary text-light btn-sm rounded-pill px-3"><i class="bi bi-github"></i> GitHub</button>
+                            <button class="btn btn-info btn-sm rounded-pill px-4 fw-bold"><i class="bi bi-facebook"></i> Facebook</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

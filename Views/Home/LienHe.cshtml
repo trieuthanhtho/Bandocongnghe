@@ -1,0 +1,119 @@
+@{
+    ViewData["Title"] = "Liên Hệ";
+}
+
+<style>
+    body { background-color: #0b0c10; color: #c5c6c7; }
+    
+    .contact-card {
+        background: #1f2833;
+        border: 1px solid rgba(102, 252, 241, 0.2);
+        box-shadow: 0 0 40px rgba(0,0,0,0.5);
+    }
+
+    .info-panel {
+        background: linear-gradient(135deg, #0b0c10 0%, #1a1a24 100%);
+        border-right: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .icon-box {
+        background: rgba(102, 252, 241, 0.1);
+        border: 1px solid rgba(102, 252, 241, 0.3);
+        box-shadow: 0 0 15px rgba(102, 252, 241, 0.2);
+        transition: all 0.3s ease;
+    }
+    
+    .icon-box:hover {
+        background: rgba(102, 252, 241, 0.2);
+        transform: scale(1.1);
+    }
+
+    /* Hiệu ứng Form Dark Mode */
+    .form-control, .input-group-text {
+        background-color: rgba(0,0,0,0.3) !important;
+        border: 1px solid rgba(255,255,255,0.1) !important;
+        color: #fff !important;
+    }
+
+    .form-control:focus {
+        border-color: #66fcf1 !important;
+        box-shadow: 0 0 10px rgba(102, 252, 241, 0.3) !important;
+    }
+
+    .form-control::placeholder {
+        color: rgba(255,255,255,0.3);
+    }
+
+    .btn-send {
+        background: linear-gradient(45deg, #9d00ff, #45a29e);
+        border: none;
+        color: white;
+        transition: all 0.3s ease;
+    }
+
+    .btn-send:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(157, 0, 255, 0.3);
+        color: white;
+    }
+</style>
+
+<div class="container mt-5 mb-5 pt-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="card contact-card rounded-4 overflow-hidden">
+                <div class="row g-0">
+                    
+                    <div class="col-md-5 info-panel text-white p-5 d-flex flex-column justify-content-center">
+                        <h3 class="fw-bold mb-4 text-uppercase" style="color: #66fcf1;"><i class="bi bi-radar me-2"></i> Radar Kết Nối</h3>
+                        <p class="mb-5 text-secondary">Hệ thống tổng đài và email của Thanhtho Corporation luôn hoạt động 24/7. Hãy cho chúng tôi biết bạn cần hỗ trợ gì.</p>
+                        
+                        <div class="d-flex align-items-center mb-4">
+                            <div class="icon-box p-3 rounded-circle me-4">
+                                <i class="bi bi-envelope-at-fill fs-4" style="color: #66fcf1;"></i>
+                            </div>
+                            <div>
+                                <span class="d-block small text-secondary text-uppercase mb-1">Email System</span>
+                                <strong class="fs-5">thogoodboy6@gmail.com</strong>
+                            </div>
+                        </div>
+                        
+                        <div class="d-flex align-items-center mb-4">
+                            <div class="icon-box p-3 rounded-circle me-4">
+                                <i class="bi bi-telephone-outbound-fill fs-4" style="color: #66fcf1;"></i>
+                            </div>
+                            <div>
+                                <span class="d-block small text-secondary text-uppercase mb-1">Hotline Server</span>
+                                <strong class="fs-5">033-861-9653</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-7 p-5" style="background-color: #1f2833;">
+                        <h3 class="fw-bold text-white mb-4">Giao Thức Liên Hệ</h3>
+                        
+                        <form action="#" method="post">
+                            <div class="mb-4">
+                                <label for="Email" class="form-label fw-semibold text-info">Tài khoản Email <span class="text-danger">*</span></label>
+                                <div class="input-group">
+                                    <span class="input-group-text border-end-0"><i class="bi bi-at text-secondary"></i></span>
+                                    <input type="email" class="form-control border-start-0" id="Email" name="Email" placeholder="Nhập email của bạn" required>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label for="NoiDung" class="form-label fw-semibold text-info">Mã lệnh / Nội dung <span class="text-danger">*</span></label>
+                                <textarea class="form-control" id="NoiDung" name="NoiDung" rows="5" placeholder="Nhập yêu cầu hỗ trợ hệ thống..." required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-send w-100 fw-bold py-3 rounded-3 mt-2 text-uppercase letter-spacing">
+                                <i class="bi bi-send-fill me-2"></i> Gửi nội dung
+                            </button>
+                        </form>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
