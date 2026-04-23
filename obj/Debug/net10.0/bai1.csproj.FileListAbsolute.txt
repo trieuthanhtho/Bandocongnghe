@@ -95,3 +95,4 @@ D:\ThanhTho\bai1\obj\Debug\net10.0\bai1.genruntimeconfig.cache
 D:\ThanhTho\bai1\obj\Debug\net10.0\ref\bai1.dll
 D:\ThanhTho\bai1\obj\Debug\net10.0\compressed\9okguhx8w9-{0}-6mg3dqnaey-6mg3dqnaey.gz
 D:\ThanhTho\bai1\obj\Debug\net10.0\compressed\7l5lmtcela-{0}-6mg3dqnaey-6mg3dqnaey.gz
+D:\ThanhTho\bai1\obj\Debug\net10.0\bai1.sourcelink.json
