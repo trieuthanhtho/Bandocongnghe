@@ -1,123 +1,491 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="vi">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Trang chủ</title>
-
-    <!-- Bootstrap + Icons -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
-      rel="stylesheet"
-    />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanhtho Corporation - Trạm Không Gian IT</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800;900&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 
     <style>
-      body {
-        background-color: #0b0c10;
-        color: #c5c6c7;
-      }
+        /* ================= TỔNG QUAN & DARK MODE ================= */
+        body { background-color: #0b0c10; color: #c5c6c7; font-family: 'Roboto', sans-serif; overflow-x: hidden; }
+        .cyber-navbar { background: rgba(11, 12, 16, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(102, 252, 241, 0.3); }
+        .nav-link.cyber-link { color: #c5c6c7; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; cursor: pointer; }
+        .nav-link.cyber-link:hover, .nav-link.cyber-link.active-nav { color: #66fcf1; text-shadow: 0 0 10px rgba(102, 252, 241, 0.5); }
 
-      .hero-section {
-        background: radial-gradient(circle at top right, #1f2833, #0b0c10);
-        padding: 6rem 0;
-        border-radius: 15px;
-        margin-top: 1rem;
-        position: relative;
-        overflow: hidden;
-        border: 1px solid rgba(102, 252, 241, 0.1);
-        box-shadow: 0 0 40px rgba(102, 252, 241, 0.05);
-      }
-
-      .hero-title {
-        font-weight: 900;
-        font-size: 3.5rem;
-        margin-bottom: 1.5rem;
-        color: #ffffff;
-      }
-
-      .text-gradient {
-        background: linear-gradient(to right, #66fcf1, #45a29e, #9d00ff);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        animation: hueRotate 5s infinite linear;
-      }
-
-      @keyframes hueRotate {
-        0% {
-          filter: hue-rotate(0deg);
+        /* ================= HIỆU ỨNG TRANG CHÍNH ================= */
+        .page-section { display: none; transform-origin: center top; }
+        
+        /* 1. Trang Chủ: Rơi xuống chớp sáng */
+        #home.active { display: block; animation: cyberDrop 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+        @keyframes cyberDrop {
+            0% { opacity: 0; transform: translateY(-100px) scale(0.9); filter: drop-shadow(0 20px 20px #66fcf1); }
+            100% { opacity: 1; transform: translateY(0) scale(1); filter: none; }
         }
-        100% {
-          filter: hue-rotate(360deg);
+
+        /* 2. Sản Phẩm: Nhiễu sóng Glitch */
+        #products.active { display: block; animation: glitchReveal 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; }
+        @keyframes glitchReveal {
+            0% { opacity: 0; transform: skewX(-20deg) translateX(-50px); filter: drop-shadow(10px 0 0 #ff00ff) drop-shadow(-10px 0 0 #00ffff); }
+            20% { opacity: 0.5; transform: skewX(20deg) translateX(30px); filter: drop-shadow(-10px 0 0 #ff00ff) drop-shadow(10px 0 0 #00ffff); }
+            40% { opacity: 0.8; transform: skewX(-10deg) translateX(-10px); }
+            60% { transform: skewX(5deg) translateX(5px); }
+            100% { opacity: 1; transform: skewX(0) translateX(0); filter: none; }
         }
-      }
 
-      .btn-hero {
-        background: linear-gradient(45deg, #66fcf1, #45a29e);
-        color: #000;
-        padding: 1rem 2.5rem;
-        border-radius: 50px;
-        text-decoration: none;
-        font-weight: bold;
-      }
+        /* 3. Liên Hệ: Quét Radar mở rộng */
+        #contact.active { display: block; animation: radarSweep 0.7s ease-out forwards; }
+        @keyframes radarSweep {
+            0% { opacity: 0; transform: scale(0.5); filter: drop-shadow(0 0 50px #45a29e) blur(10px); }
+            50% { opacity: 0.8; transform: scale(1.05); filter: drop-shadow(0 0 20px #66fcf1) blur(2px); }
+            100% { opacity: 1; transform: scale(1); filter: none; }
+        }
 
-      .feature-box {
-        padding: 2rem;
-        border-radius: 15px;
-        background: rgba(31, 40, 51, 0.5);
-        transition: 0.3s;
-      }
+        /* 4. Đăng Nhập: Lướt tia dữ liệu */
+        #login.active { display: block; animation: dataStreamIn 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards; }
+        @keyframes dataStreamIn {
+            0% { opacity: 0; transform: translateX(100vw) skewX(-30deg) scaleX(2); filter: drop-shadow(-20px 0 10px #9d00ff); }
+            100% { opacity: 1; transform: translateX(0) skewX(0) scaleX(1); filter: none; }
+        }
 
-      .feature-box:hover {
-        transform: translateY(-10px);
-      }
+        /* 5. Đăng Ký: Nổ lõi năng lượng */
+        #register.active { display: block; animation: coreExplodeIn 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+        @keyframes coreExplodeIn {
+            0% { opacity: 0; transform: scale(2); filter: brightness(300%) blur(20px) drop-shadow(0 0 50px #ff00ff); }
+            100% { opacity: 1; transform: scale(1); filter: brightness(100%) blur(0); }
+        }
+
+
+        /* ================= GIAO DIỆN COMPONENT ================= */
+        .hero-section { background: radial-gradient(circle at top right, #1f2833, #0b0c10); padding: 6rem 0; border-radius: 15px; margin-top: 1rem; position: relative; overflow: hidden; border: 1px solid rgba(102, 252, 241, 0.1); box-shadow: 0 0 40px rgba(102, 252, 241, 0.05); }
+        .hero-title { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 3.5rem; line-height: 1.2; margin-bottom: 1.5rem; color: #ffffff; }
+        .text-gradient { background: linear-gradient(to right, #66fcf1, #45a29e, #9d00ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: hueRotate 5s infinite linear; }
+        @keyframes hueRotate { 0% { filter: hue-rotate(0deg); } 100% { filter: hue-rotate(360deg); } }
+        .hero-subtitle { font-size: 1.1rem; color: #8b929a; margin-bottom: 2rem; max-width: 600px; }
+        .btn-hero { background: linear-gradient(45deg, #66fcf1, #45a29e); color: #0b0c10; font-weight: 800; text-transform: uppercase; padding: 1rem 2.5rem; border-radius: 50px; text-decoration: none; transition: all 0.3s ease; box-shadow: 0 0 15px rgba(102, 252, 241, 0.4); border: none; display: inline-block; }
+        .btn-hero:hover { transform: translateY(-3px); box-shadow: 0 0 30px rgba(102, 252, 241, 0.7); color: #000; }
+        .section-title { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 2.2rem; color: #ffffff; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 1px; }
+        .feature-box { text-align: center; padding: 2.5rem 1.5rem; border-radius: 15px; background: rgba(31, 40, 51, 0.5); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.05); transition: all 0.4s ease; height: 100%; }
+        .feature-box:hover { transform: translateY(-10px); border-color: #66fcf1; box-shadow: 0 15px 30px rgba(102, 252, 241, 0.15); background: rgba(31, 40, 51, 0.8); }
+        .feature-icon { font-size: 3rem; background: linear-gradient(45deg, #66fcf1, #9d00ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1.2rem; }
+        .feature-title { color: #ffffff; font-weight: 700; margin-bottom: 0.5rem; }
+        .tech-banner { position: relative; background: linear-gradient(135deg, #1f2833, #0b0c10, #45a29e); color: white; border-radius: 15px; overflow: hidden; border: 1px solid rgba(102, 252, 241, 0.2); }
+        .tech-card { background-color: #1f2833; transition: all 0.4s ease; border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 12px; overflow: hidden; }
+        .tech-card .card-title { color: #ffffff !important; font-size: 1.05rem; }
+        .tech-card:hover { transform: translateY(-10px) scale(1.02); box-shadow: 0 15px 30px rgba(102, 252, 241, 0.2); border-color: #66fcf1; z-index: 10; }
+        .tech-card img { background-color: #ffffff; border-bottom: 2px solid #333; height: 220px; object-fit: cover; }
+        .sidebar-menu .nav-link { background-color: transparent; color: #c5c6c7; border: none; border-radius: 0; border-left: 3px solid transparent; transition: all 0.2s ease; padding: 15px 20px; text-align: left; width: 100%; cursor: pointer; }
+        .sidebar-menu .nav-link:hover, .sidebar-menu .nav-link.active { background-color: rgba(102, 252, 241, 0.1); border-left: 3px solid #66fcf1; color: #66fcf1; font-weight: bold; }
+        .section-title-neon { color: #ffffff; text-transform: uppercase; font-weight: 800; letter-spacing: 2px; text-shadow: 0 0 10px rgba(102, 252, 241, 0.5); }
+        .student-info-block { background: linear-gradient(to top, #0b0c10, #1f2833); border-top: 2px solid #9d00ff; }
+        .product-actions { display: grid; grid-template-columns: 1fr 2fr; gap: 8px; margin-top: 15px; }
+        .btn-buy { background: linear-gradient(45deg, #45a29e, #66fcf1); border: none; color: #0b0c10; transition: all 0.3s ease; }
+        .btn-buy:hover { background: #66fcf1; box-shadow: 0 0 15px rgba(102, 252, 241, 0.4); transform: translateY(-2px); color: #000; }
+
+        /* ================= HIỆU ỨNG TAB SẢN PHẨM ================= */
+        .tab-pane.fade { transition: none !important; opacity: 1; display: none; }
+        .tab-pane.active.show { display: block; }
+
+        /* Tab 1: Laptop - Holographic Overdrive */
+        #v-pills-laptop.active.show { animation: holoOverdrive 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; transform-origin: center center; }
+        @keyframes holoOverdrive {
+            0% { opacity: 0; transform: scale3d(2, 0.1, 1) translateY(-50px) skewX(30deg); filter: hue-rotate(180deg) saturate(300%) drop-shadow(15px 15px 0px #ff00ff) blur(10px); }
+            50% { opacity: 1; transform: scale3d(0.95, 0.95, 1) translateY(-5px) skewX(5deg); filter: hue-rotate(45deg) saturate(150%) blur(1px); }
+            100% { opacity: 1; transform: scale3d(1, 1, 1) translateY(0) skewX(0); filter: none; }
+        }
+
+        /* Tab 2: PC - 3D Matrix Decode */
+        #v-pills-pc { perspective: 1000px; }
+        #v-pills-pc.active.show { animation: matrixDecode 0.7s ease-out forwards; transform-style: preserve-3d; }
+        @keyframes matrixDecode {
+            0% { opacity: 0; transform: rotateX(-90deg) translateZ(-200px); filter: drop-shadow(0 20px 30px #198754); }
+            60% { opacity: 0.8; transform: rotateX(20deg) translateZ(50px); }
+            100% { opacity: 1; transform: rotateX(0deg) translateZ(0); filter: none; }
+        }
+
+        /* Tab 3: Điện thoại - Trượt giáng lâm (Cyber Drop) */
+        #v-pills-phone.active.show { animation: neonSlideDown 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards; }
+        @keyframes neonSlideDown {
+            0% { opacity: 0; transform: translateY(-80px); filter: drop-shadow(0 -30px 10px #ffc107) blur(5px); }
+            100% { opacity: 1; transform: translateY(0); filter: none; }
+        }
+
+        /* Tab 4: Gear - Vút bóng ma đỏ (Glitch Whip) */
+        #v-pills-gear.active.show { animation: glitchWhip 0.6s ease-out forwards; }
+        @keyframes glitchWhip {
+            0% { opacity: 0; transform: translateX(150px) rotate(5deg) scaleY(1.5); filter: drop-shadow(-30px 0 0 #dc3545) blur(4px); }
+            50% { opacity: 1; transform: translateX(-20px) rotate(-2deg) scaleY(0.9); filter: drop-shadow(10px 0 0 rgba(220,53,69,0.5)); }
+            100% { opacity: 1; transform: translateX(0) rotate(0) scaleY(1); filter: none; }
+        }
+
+        /* Tab 5: Linh Kiện - Hội tụ tia sáng xanh */
+        #v-pills-lk.active.show { animation: bluePulseIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+        @keyframes bluePulseIn {
+            0% { opacity: 0; transform: scale(0.7); filter: drop-shadow(0 0 60px #0d6efd) brightness(200%); }
+            100% { opacity: 1; transform: scale(1); filter: drop-shadow(0 0 0 transparent) brightness(100%); }
+        }
+
+        /* ================= LIÊN HỆ, ĐĂNG NHẬP, ĐĂNG KÝ CSS ================= */
+        .contact-card { background: #1f2833; border: 1px solid rgba(102, 252, 241, 0.2); box-shadow: 0 0 40px rgba(0,0,0,0.5); }
+        .info-panel { background: linear-gradient(135deg, #0b0c10 0%, #1a1a24 100%); border-right: 1px solid rgba(255,255,255,0.05); }
+        .icon-box { background: rgba(102, 252, 241, 0.1); border: 1px solid rgba(102, 252, 241, 0.3); box-shadow: 0 0 15px rgba(102, 252, 241, 0.2); transition: all 0.3s ease; }
+        .icon-box:hover { background: rgba(102, 252, 241, 0.2); transform: scale(1.1); }
+        .form-control, .input-group-text { background-color: rgba(0,0,0,0.3) !important; border: 1px solid rgba(255,255,255,0.1) !important; color: #fff !important; }
+        .form-control:focus { border-color: #66fcf1 !important; box-shadow: 0 0 10px rgba(102, 252, 241, 0.3) !important; }
+        .form-control::placeholder { color: rgba(255,255,255,0.3); }
+        .btn-send { background: linear-gradient(45deg, #9d00ff, #45a29e); border: none; color: white; transition: all 0.3s ease; }
+        .btn-send:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(157, 0, 255, 0.3); color: white; }
+
+        .cyber-login-container { min-height: 80vh; display: flex; align-items: center; justify-content: center; }
+        .cyber-card-login { background: rgba(11, 12, 16, 0.85); backdrop-filter: blur(15px); border: 2px solid rgba(102, 252, 241, 0.3); border-radius: 15px; box-shadow: 0 0 30px rgba(102, 252, 241, 0.1); padding: 40px; width: 100%; max-width: 450px; position: relative; overflow: hidden; }
+        .cyber-card-register { background: rgba(11, 12, 16, 0.85); border: 2px solid rgba(255, 0, 255, 0.3); border-radius: 15px; padding: 40px; width: 100%; max-width: 450px; position: relative; overflow: hidden; }
+        .cyber-input { background: rgba(31, 40, 51, 0.6) !important; color: #ffffff !important; padding: 15px 20px; border-radius: 8px; transition: all 0.3s ease; }
+        .cyber-input-login { border: 1px solid #45a29e !important; }
+        .cyber-input-register { border: 1px solid #9d00ff !important; }
+        .cyber-input-login::placeholder { color: rgba(102, 252, 241, 0.7) !important; font-style: italic; }
+        .cyber-input-register::placeholder { color: rgba(255, 0, 255, 0.7) !important; font-style: italic; }
+        .cyber-input-login:focus { box-shadow: 0 0 15px rgba(102, 252, 241, 0.4) !important; background: rgba(31, 40, 51, 0.9) !important; }
+        .cyber-input-register:focus { box-shadow: 0 0 15px rgba(255, 0, 255, 0.4) !important; }
+        .cyber-btn-login { background: linear-gradient(45deg, #9d00ff, #66fcf1); border: none; color: #fff; font-weight: 800; letter-spacing: 2px; padding: 15px; border-radius: 8px; text-transform: uppercase; transition: all 0.3s ease; }
+        .cyber-btn-register { background: linear-gradient(45deg, #00ffff, #ff00ff); border: none; color: #000; font-weight: 800; padding: 15px; border-radius: 8px; }
     </style>
-  </head>
+</head>
+<body>
 
-  <body>
-    <div class="container mt-4">
-      <div class="hero-section text-center">
-        <h1 class="hero-title">
-          Định Hình <span class="text-gradient">Tương Lai</span>
-        </h1>
-        <p>Chào mừng đến với Thanhtho Corporation</p>
-
-        <!-- SỬA LINK -->
-        <a href="#" class="btn-hero">Khám phá</a>
-      </div>
-
-      <div class="row mt-5">
-        <div class="col-md-3">
-          <div class="feature-box text-center">
-            <i class="bi bi-rocket"></i>
-            <h5>Giao nhanh</h5>
-          </div>
+    <nav class="navbar navbar-expand-lg cyber-navbar sticky-top">
+        <div class="container">
+            <a class="navbar-brand text-white fw-bold" href="#" onclick="switchPage('home')">
+                <i class="bi bi-cpu text-info"></i> THANHTHO<span style="color: #66fcf1;">_</span>IT
+            </a>
+            <button class="navbar-toggler border-info" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto gap-3">
+                    <li class="nav-item"><a class="nav-link cyber-link active-nav" onclick="switchPage('home', this)">Trang Chủ</a></li>
+                    <li class="nav-item"><a class="nav-link cyber-link" onclick="switchPage('products', this)">Sản Phẩm</a></li>
+                    <li class="nav-item"><a class="nav-link cyber-link" onclick="switchPage('contact', this)">Liên Hệ</a></li>
+                    <li class="nav-item"><a class="nav-link cyber-link text-warning" onclick="switchPage('login', this)"><i class="bi bi-box-arrow-in-right"></i> Đăng Nhập</a></li>
+                </ul>
+            </div>
         </div>
+    </nav>
 
-        <div class="col-md-3">
-          <div class="feature-box text-center">
-            <i class="bi bi-shield"></i>
-            <h5>Bảo hành</h5>
-          </div>
-        </div>
+    <div id="home" class="page-section active">
+        <div class="container mt-4">
+            <div class="hero-section px-4 px-md-5 text-center text-md-start mb-5">
+                <div class="row align-items-center">
+                    <div class="col-md-6 mb-4 mb-md-0 z-1">
+                        <span class="badge bg-dark border border-secondary text-light mb-3 px-3 py-2 rounded-pill"><i class="bi bi-lightning-charge-fill text-warning"></i> Thế hệ mới 2026</span>
+                        <h1 class="hero-title">Định Hình<br><span class="text-gradient">Tương Lai</span> Công Nghệ.</h1>
+                        <p class="hero-subtitle">Chào mừng bạn đến với Thanhtho Corporation. Khám phá các thiết bị thông minh, hiệu năng cao và giải pháp công nghệ dẫn đầu xu hướng.</p>
+                        <button onclick="switchPage('products', document.querySelectorAll('.cyber-link')[1])" class="btn-hero"><i class="bi bi-rocket-takeoff me-2"></i> Khám phá cửa hàng</button>
+                    </div>
+                    <div class="col-md-6 text-center z-1 position-relative">
+                        <div class="position-absolute top-50 start-50 translate-middle w-75 h-75 bg-info opacity-25 rounded-circle blur-lg" style="filter: blur(50px);"></div>
+                        <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=800&auto=format&fit=crop" class="img-fluid rounded-4 shadow-lg position-relative" alt="Công nghệ hiện đại" style="max-height: 450px; object-fit: cover; border: 2px solid rgba(255,255,255,0.1);">
+                    </div>
+                </div>
+            </div>
 
-        <div class="col-md-3">
-          <div class="feature-box text-center">
-            <i class="bi bi-arrow-repeat"></i>
-            <h5>Đổi trả</h5>
-          </div>
+            <div class="about-section py-5 mb-5">
+                <div class="row align-items-center">
+                    <div class="col-lg-5 mb-5 mb-lg-0">
+                        <h2 class="section-title">Về Thanhtho<span style="color: #66fcf1;">_</span></h2>
+                        <p class="text-secondary fs-5 mb-4" style="line-height: 1.8;">
+                            Được thành lập với sứ mệnh mang công nghệ đỉnh cao đến gần hơn với người dùng, <strong class="text-light">Thanhtho Corporation</strong> tự hào là hệ thống phân phối thiết bị điện tử Gaming & Workstation hàng đầu.
+                        </p>
+                        <div class="d-flex gap-3 mb-4">
+                            <div class="text-center p-3 border border-secondary rounded-3 bg-dark flex-fill"><h3 class="text-gradient fw-bold mb-0">10K+</h3><span class="small text-muted">Khách hàng</span></div>
+                            <div class="text-center p-3 border border-secondary rounded-3 bg-dark flex-fill"><h3 class="text-gradient fw-bold mb-0">100%</h3><span class="small text-muted">Chính hãng</span></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 offset-lg-1">
+                        <div class="row g-4">
+                            <div class="col-sm-6"><div class="feature-box"><i class="bi bi-rocket-takeoff feature-icon"></i><h4 class="feature-title">Giao Hỏa Tốc</h4><p class="text-secondary small mb-0">Miễn phí vận chuyển cho đơn trên 5.000.000đ.</p></div></div>
+                            <div class="col-sm-6"><div class="feature-box"><i class="bi bi-shield-check feature-icon"></i><h4 class="feature-title">Bảo Hành VIP</h4><p class="text-secondary small mb-0">Cam kết 100% chính hãng. Bảo hành tận nhà 24T.</p></div></div>
+                            <div class="col-sm-6"><div class="feature-box"><i class="bi bi-arrow-repeat feature-icon"></i><h4 class="feature-title">1 Đổi 1 Dễ Dàng</h4><p class="text-secondary small mb-0">Lỗi là đổi mới trong 30 ngày, thủ tục 5 phút.</p></div></div>
+                            <div class="col-sm-6"><div class="feature-box"><i class="bi bi-headset feature-icon"></i><h4 class="feature-title">Support 24/7</h4><p class="text-secondary small mb-0">Đội ngũ kỹ thuật IT chuyên nghiệp luôn sẵn sàng.</p></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <div class="col-md-3">
-          <div class="feature-box text-center">
-            <i class="bi bi-headset"></i>
-            <h5>Hỗ trợ</h5>
-          </div>
-        </div>
-      </div>
     </div>
-  </body>
+
+    <div id="products" class="page-section">
+        <div class="container-fluid mt-4">
+            <div class="row mb-5">
+                <div class="col-12">
+                    <div class="tech-banner d-flex align-items-center" style="min-height: 250px;">
+                        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop" class="position-absolute w-100 h-100 opacity-25" style="object-fit: cover; mix-blend-mode: luminosity;">
+                        <div class="position-relative p-5 w-100 text-center text-md-start z-1">
+                            <span class="badge bg-transparent border border-info text-info mb-3 px-4 py-2 fs-6 rounded-pill"><i class="bi bi-stars"></i> TRẠM KHÔNG GIAN IT</span>
+                            <h2 class="display-5 fw-bolder text-white mb-2" style="text-shadow: 2px 2px 4px #000;">KHO VŨ KHÍ CÔNG NGHỆ</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row container-fluid pe-0">
+                <aside class="col-lg-3 mb-4">
+                    <div class="card bg-dark border-secondary mb-4 rounded-4 shadow-lg sticky-top" style="top: 80px; z-index: 100;">
+                        <div class="card-header bg-transparent border-bottom border-secondary pt-4 pb-3">
+                            <h5 class="fw-bold text-uppercase text-light mb-0"><i class="bi bi-cpu text-info me-2"></i> Danh Mục Thiết Bị</h5>
+                        </div>
+                        <div class="card-body p-0 sidebar-menu pb-2">
+                            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                                <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#v-pills-laptop" type="button" role="tab"><i class="bi bi-laptop me-2"></i> Laptop & Macbook</button>
+                                <button class="nav-link" data-bs-toggle="pill" data-bs-target="#v-pills-pc" type="button" role="tab"><i class="bi bi-pc-display me-2"></i> PC & Workstation</button>
+                                <button class="nav-link" data-bs-toggle="pill" data-bs-target="#v-pills-phone" type="button" role="tab"><i class="bi bi-phone me-2"></i> Điện thoại & Tablet</button>
+                                <button class="nav-link" data-bs-toggle="pill" data-bs-target="#v-pills-gear" type="button" role="tab"><i class="bi bi-mouse me-2"></i> Gaming Gear</button>
+                                <button class="nav-link" data-bs-toggle="pill" data-bs-target="#v-pills-lk" type="button" role="tab"><i class="bi bi-motherboard me-2"></i> Linh kiện máy tính</button>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+
+                <main class="col-lg-9">
+                    <div class="tab-content" id="v-pills-tabContent">
+                        <div class="tab-pane fade show active" id="v-pills-laptop" role="tabpanel">
+                            <h3 class="section-title-neon mb-4"><i class="bi bi-laptop text-info me-2"></i> LAPTOP & MACBOOK</h3>
+                            <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4 mb-5" id="laptop-container"></div>
+                        </div>
+                        <div class="tab-pane fade" id="v-pills-pc" role="tabpanel">
+                            <h3 class="section-title-neon mb-4"><i class="bi bi-pc-display text-success me-2"></i> PC & WORKSTATION</h3>
+                            <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4 mb-5" id="pc-container"></div>
+                        </div>
+                        <div class="tab-pane fade" id="v-pills-phone" role="tabpanel">
+                            <h3 class="section-title-neon mb-4"><i class="bi bi-phone text-warning me-2"></i> ĐIỆN THOẠI & TABLET</h3>
+                            <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4 mb-5" id="phone-container"></div>
+                        </div>
+                        <div class="tab-pane fade" id="v-pills-gear" role="tabpanel">
+                            <h3 class="section-title-neon mb-4"><i class="bi bi-mouse text-danger me-2"></i> GAMING GEAR</h3>
+                            <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4 mb-5" id="gear-container"></div>
+                        </div>
+                        <div class="tab-pane fade" id="v-pills-lk" role="tabpanel">
+                            <h3 class="section-title-neon mb-4"><i class="bi bi-motherboard text-primary me-2"></i> LINH KIỆN MÁY TÍNH</h3>
+                            <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4 mb-5" id="lk-container"></div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+        
+        <div class="container-fluid px-0 mt-5">
+            <div class="student-info-block p-5 rounded-top-5 shadow-lg">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-md-7 mb-4 mb-md-0">
+                            <h4 class="text-white fw-bold mb-4 text-uppercase"><i class="bi bi-terminal-fill text-info"></i> Thông tin dự án</h4>
+                            <div class="d-flex flex-column gap-3">
+                                <div class="d-flex align-items-center bg-black bg-opacity-50 p-3 rounded-4 border border-secondary border-opacity-25">
+                                    <i class="bi bi-person-bounding-box fs-1 text-info me-4"></i>
+                                    <div><span class="small text-secondary d-block text-uppercase letter-spacing">Sinh viên thực hiện</span><strong class="text-white fs-5">Triệu Thanh Tho</strong></div>
+                                </div>
+                                <div class="d-flex align-items-center bg-black bg-opacity-50 p-3 rounded-4 border border-secondary border-opacity-25">
+                                    <i class="bi bi-upc-scan fs-1 text-info me-4"></i>
+                                    <div><span class="small text-secondary d-block text-uppercase letter-spacing">Mã số sinh viên</span><strong class="text-white fs-5">243913</strong></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5 text-md-end">
+                            <div class="bg-black bg-opacity-50 p-4 rounded-4 border border-secondary border-opacity-25 h-100">
+                                <h5 class="text-white mb-4"><i class="bi bi-broadcast text-danger me-2"></i>Mạng lưới kết nối</h5>
+                                <p class="mb-2 text-start text-light"><i class="bi bi-envelope text-info me-3"></i> thogoodboy6@gmail.com</p>
+                                <p class="mb-4 text-start text-light"><i class="bi bi-telephone text-info me-3"></i> 033-861-9653</p>
+                                <div class="d-flex justify-content-start justify-content-md-end gap-2 mt-4 pt-3 border-top border-secondary border-opacity-50">
+                                    <button class="btn btn-outline-secondary text-light btn-sm rounded-pill px-3"><i class="bi bi-github"></i> GitHub</button>
+                                    <button class="btn btn-info btn-sm rounded-pill px-4 fw-bold"><i class="bi bi-facebook"></i> Facebook</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="contact" class="page-section">
+        <div class="container mt-5 mb-5 pt-4">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="card contact-card rounded-4 overflow-hidden">
+                        <div class="row g-0">
+                            <div class="col-md-5 info-panel text-white p-5 d-flex flex-column justify-content-center">
+                                <h3 class="fw-bold mb-4 text-uppercase" style="color: #66fcf1;"><i class="bi bi-radar me-2"></i> Radar Kết Nối</h3>
+                                <p class="mb-5 text-secondary">Hệ thống tổng đài và email của Thanhtho Corporation luôn hoạt động 24/7. Hãy cho chúng tôi biết bạn cần hỗ trợ gì.</p>
+                                <div class="d-flex align-items-center mb-4">
+                                    <div class="icon-box p-3 rounded-circle me-4"><i class="bi bi-envelope-at-fill fs-4" style="color: #66fcf1;"></i></div>
+                                    <div><span class="d-block small text-secondary text-uppercase mb-1">Email System</span><strong class="fs-5">thogoodboy6@gmail.com</strong></div>
+                                </div>
+                                <div class="d-flex align-items-center mb-4">
+                                    <div class="icon-box p-3 rounded-circle me-4"><i class="bi bi-telephone-outbound-fill fs-4" style="color: #66fcf1;"></i></div>
+                                    <div><span class="d-block small text-secondary text-uppercase mb-1">Hotline Server</span><strong class="fs-5">033-861-9653</strong></div>
+                                </div>
+                            </div>
+                            <div class="col-md-7 p-5" style="background-color: #1f2833;">
+                                <h3 class="fw-bold text-white mb-4">Giao Thức Liên Hệ</h3>
+                                <form action="#" onsubmit="alert('Giao thức đã gửi!'); return false;">
+                                    <div class="mb-4">
+                                        <label class="form-label fw-semibold text-info">Tài khoản Email <span class="text-danger">*</span></label>
+                                        <div class="input-group">
+                                            <span class="input-group-text border-end-0"><i class="bi bi-at text-secondary"></i></span>
+                                            <input type="email" class="form-control border-start-0" placeholder="Nhập email của bạn" required>
+                                        </div>
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="form-label fw-semibold text-info">Mã lệnh / Nội dung <span class="text-danger">*</span></label>
+                                        <textarea class="form-control" rows="5" placeholder="Nhập yêu cầu hỗ trợ hệ thống..." required></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-send w-100 fw-bold py-3 rounded-3 mt-2 text-uppercase letter-spacing">
+                                        <i class="bi bi-send-fill me-2"></i> Gửi nội dung
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="login" class="page-section">
+        <div class="cyber-login-container">
+            <div class="cyber-card-login">
+                <div class="text-center mb-4">
+                    <i class="bi bi-fingerprint text-info display-1" style="filter: drop-shadow(0 0 10px #66fcf1);"></i>
+                    <h3 class="text-white mt-3 fw-bold">ĐĂNG NHẬP TÀI KHOẢN</h3>
+                </div>
+                <form action="#" onsubmit="alert('Đăng nhập thành công!'); switchPage('home'); return false;">
+                    <div class="mb-4 position-relative">
+                        <i class="bi bi-person position-absolute top-50 start-0 translate-middle-y ms-3 text-info"></i>
+                        <input type="text" class="form-control cyber-input cyber-input-login ps-5" placeholder="Nhập tài khoản" required>
+                    </div>
+                    <div class="mb-4 position-relative">
+                        <i class="bi bi-shield-lock position-absolute top-50 start-0 translate-middle-y ms-3 text-info"></i>
+                        <input type="password" class="form-control cyber-input cyber-input-login ps-5" placeholder="Nhập mật khẩu" required>
+                    </div>
+                    <button type="submit" class="btn cyber-btn-login w-100 mb-3">ĐĂNG NHẬP</button>
+                    <div class="text-center mt-3 border-top border-secondary pt-3 small">
+                        <span class="text-secondary">Bạn chưa có tài khoản?</span>
+                        <a href="#" onclick="switchPage('register')" class="text-info text-decoration-none fw-bold ms-1">Đăng kí ngay!</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="register" class="page-section">
+        <div class="cyber-login-container">
+            <div class="cyber-card-register">
+                <div class="text-center mb-4">
+                    <i class="bi bi-cpu text-danger display-1" style="filter: drop-shadow(0 0 10px #ff00ff);"></i>
+                    <h3 class="text-white mt-3 fw-bold">ĐĂNG KÍ TÀI KHOẢN</h3>
+                </div>
+                <form action="#" onsubmit="alert('Đăng ký thành công!'); switchPage('login'); return false;">
+                    <div class="mb-3 position-relative">
+                        <i class="bi bi-person position-absolute top-50 start-0 translate-middle-y ms-3" style="color: #ff00ff;"></i>
+                        <input type="text" class="form-control cyber-input cyber-input-register ps-5" placeholder="Nhập tên tài khoản" required>
+                    </div>
+                    <div class="mb-3 position-relative">
+                        <i class="bi bi-envelope position-absolute top-50 start-0 translate-middle-y ms-3" style="color: #ff00ff;"></i>
+                        <input type="email" class="form-control cyber-input cyber-input-register ps-5" placeholder="Nhập email" required>
+                    </div>
+                    <div class="mb-4 position-relative">
+                        <i class="bi bi-shield-lock position-absolute top-50 start-0 translate-middle-y ms-3" style="color: #ff00ff;"></i>
+                        <input type="password" class="form-control cyber-input cyber-input-register ps-5" placeholder="Nhập lại mật khẩu" required>
+                    </div>
+                    <button type="submit" class="btn cyber-btn-register w-100 mb-3">TẠO TÀI KHOẢN MỚI</button>
+                    <div class="text-center mt-3 border-top border-secondary pt-3 small">
+                        <span class="text-secondary">Bạn đã có tài khoản?</span>
+                        <a href="#" onclick="switchPage('login')" class="text-danger text-decoration-none fw-bold ms-1">Quay lại Đăng nhập</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Mẹo ép trình duyệt chạy lại animation CSS: gỡ bỏ class xong gắn lại ngay lập tức
+        function switchPage(pageId, navItem = null) {
+            const allPages = document.querySelectorAll('.page-section');
+            allPages.forEach(sec => sec.classList.remove('active'));
+            
+            // Ép trình duyệt "quên" DOM cũ để reset hiệu ứng animation
+            void document.getElementById(pageId).offsetWidth; 
+            
+            document.getElementById(pageId).classList.add('active');
+            
+            if(navItem) {
+                document.querySelectorAll('.cyber-link').forEach(link => link.classList.remove('active-nav'));
+                navItem.classList.add('active-nav');
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        const db = {
+            laptops: [
+                { Name: "MacBook Pro M3 Max", Specs: "Apple M3 Max | 36GB RAM | 1TB SSD", Price: "79.990.000₫", Badge: "HOT", Img: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=400" },
+                { Name: "ASUS ROG Strix SCAR 18", Specs: "Core i9 14900HX | RTX 4090 | 64GB", Price: "109.990.000₫", Badge: "GAMING", Img: "https://images.unsplash.com/photo-1603302576837-37561b2e2302?q=80&w=400" },
+                { Name: "Dell XPS 15 9530", Specs: "Core i7 13700H | 16GB RAM | OLED", Price: "45.500.000₫", Badge: "", Img: "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?q=80&w=400" },
+                { Name: "Lenovo ThinkPad X1", Specs: "Core Ultra 7 | 32GB RAM | 512GB", Price: "52.000.000₫", Badge: "NEW", Img: "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?q=80&w=400" }
+            ],
+            pcs: [
+                { Name: "PC AI Master Build", Specs: "Ryzen 9 7950X | 64GB RAM | 2TB SSD", Price: "62.000.000₫", Badge: "AI READY", Img: "https://images.unsplash.com/photo-1587831990711-23ca6441447b?q=80&w=400" },
+                { Name: "Apple Mac Studio", Specs: "M2 Ultra | 64GB Unified | 1TB SSD", Price: "99.990.000₫", Badge: "PRO", Img: "https://images.unsplash.com/photo-1622286342621-4bd786c2447c?q=80&w=400" },
+                { Name: "PC Gaming Infinity", Specs: "Core i9 14900K | RTX 4080 Super", Price: "85.500.000₫", Badge: "HOT", Img: "https://images.unsplash.com/photo-1563298723-dcfebaa392e3?q=80&w=400" }
+            ],
+            phones: [
+                { Name: "iPhone 15 Pro Max", Specs: "Titanium | 256GB | A17 Pro", Price: "29.500.000₫", Badge: "BEST SELLER", Img: "https://images.unsplash.com/photo-1696446701796-da61225697cc?q=80&w=400" },
+                { Name: "Galaxy S24 Ultra", Specs: "Galaxy AI | 512GB | Snap 8 Gen 3", Price: "31.990.000₫", Badge: "HOT", Img: "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?q=80&w=400" },
+                { Name: "iPad Pro M4 2026", Specs: "OLED 13-inch | 256GB | Wifi", Price: "28.990.000₫", Badge: "NEW", Img: "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?q=80&w=400" }
+            ],
+            gears: [
+                { Name: "Chuột Logitech G Pro X 2", Specs: "Superlight | 60g | Sensor Hero 2", Price: "3.200.000₫", Badge: "TOP 1", Img: "https://images.unsplash.com/photo-1605773527852-c546a8584ea3?q=80&w=400" },
+                { Name: "Phím Razer BlackWidow V4", Specs: "Switch Green | LED Chroma", Price: "4.500.000₫", Badge: "", Img: "https://images.unsplash.com/photo-1595225476474-87563907a212?q=80&w=400" },
+                { Name: "Tai nghe HyperX Cloud III", Specs: "Wireless | Pin 120h | DTS:X", Price: "3.800.000₫", Badge: "NEW", Img: "https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?q=80&w=400" }
+            ],
+            lk: [
+                { Name: "VGA RTX 4090 24GB", Specs: "NVIDIA Ada Lovelace | DLSS 3", Price: "55.000.000₫", Badge: "FLAGSHIP", Img: "https://images.unsplash.com/photo-1591488320449-011701bb6704?q=80&w=400" },
+                { Name: "CPU Core i9-14900K", Specs: "24 Nhân | 32 Luồng | 6.0 GHz", Price: "14.500.000₫", Badge: "HOT", Img: "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?q=80&w=400" },
+                { Name: "Mainboard ASUS ROG Z790", Specs: "Maximus Hero | DDR5 | PCIe 5.0", Price: "16.200.000₫", Badge: "", Img: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=400" }
+            ]
+        };
+
+        function renderProducts(category, containerId, borderColor, badgeColor, textColor) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = db[category].map(item => `
+                <div class="col">
+                    <div class="card h-100 tech-card" style="border-color: rgba(${borderColor}, 0.3);">
+                        ${item.Badge ? `<span class="badge ${badgeColor} position-absolute top-0 end-0 m-3 px-3 py-2 rounded-pill shadow">${item.Badge}</span>` : ''}
+                        <img src="${item.Img}" class="card-img-top p-3" alt="${item.Name}">
+                        <div class="card-body text-center pt-0">
+                            <h6 class="card-title text-truncate fw-bold">${item.Name}</h6>
+                            <p class="text-secondary small mb-3">${item.Specs}</p>
+                            <h4 class="${textColor} fw-bold mb-2">${item.Price}</h4>
+                            <div class="product-actions">
+                                <button class="btn btn-sm btn-outline-${textColor.split('-')[1]} fw-bold"><i class="bi bi-cart-plus"></i></button>
+                                <button class="btn btn-sm btn-buy fw-bold text-uppercase">Mua ngay</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        window.onload = () => {
+            renderProducts('laptops', 'laptop-container', '13, 202, 240', 'bg-danger', 'text-info');
+            renderProducts('pcs', 'pc-container', '25, 135, 84', 'bg-success', 'text-success');
+            renderProducts('phones', 'phone-container', '255, 193, 7', 'bg-warning text-dark', 'text-warning');
+            renderProducts('gears', 'gear-container', '220, 53, 69', 'bg-danger', 'text-danger');
+            renderProducts('lk', 'lk-container', '13, 110, 253', 'bg-primary', 'text-primary');
+        };
+    </script>
+</body>
 </html>
