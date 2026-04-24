@@ -48,61 +48,85 @@
         color: #66fcf1;
         text-shadow: 0 0 10px rgba(102, 252, 241, 0.5);
       }
-      /* ================= HIỆU ỨNG TRANG CHÍNH ================= */
+      /* ================= HIỆU ỨNG TRANG CHÍNH (CỰC MẠNH) ================= */
 
       .page-section {
         display: none;
         transform-origin: center top;
       }
-      /* 1. Trang Chủ: Rơi xuống chớp sáng */
+      /* 1. Trang Chủ: Rơi đập mạnh, giật nảy màn hình */
 
       #home.active {
         display: block;
-        animation: cyberDrop 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)
-          forwards;
+        animation: cyberSlam 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
       }
 
-      @keyframes cyberDrop {
+      @keyframes cyberSlam {
         0% {
           opacity: 0;
-          transform: translateY(-100px) scale(0.9);
-          filter: drop-shadow(0 20px 20px #66fcf1);
+          transform: translateY(-200px) scale(1.5);
+          filter: hue-rotate(90deg) drop-shadow(0 50px 50px #00ffff);
+        }
+        30% {
+          opacity: 1;
+          transform: translateY(30px) scale(0.9);
+          filter: hue-rotate(-90deg) drop-shadow(0 -20px 50px #ff00ff);
+        }
+        45% {
+          transform: translateY(-15px) translateX(15px) skewX(15deg);
+          filter: drop-shadow(-15px 0 0 red) drop-shadow(15px 0 0 cyan);
+        }
+        60% {
+          transform: translateY(10px) translateX(-10px) skewX(-15deg);
+          filter: drop-shadow(15px 0 0 red) drop-shadow(-15px 0 0 cyan);
+        }
+        75% {
+          transform: translateY(-5px) translateX(5px) skewX(5deg);
+          filter: saturate(400%);
         }
         100% {
-          opacity: 1;
-          transform: translateY(0) scale(1);
+          transform: translateY(0) scale(1) translateX(0) skewX(0);
           filter: none;
         }
       }
-      /* 2. Sản Phẩm: Nhiễu sóng Glitch */
+      /* 2. Sản Phẩm: Nhiễu sóng Glitch cực độ xé hình */
 
       #products.active {
         display: block;
-        animation: glitchReveal 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+        animation: hyperGlitch 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94)
           forwards;
       }
 
-      @keyframes glitchReveal {
+      @keyframes hyperGlitch {
         0% {
           opacity: 0;
-          transform: skewX(-20deg) translateX(-50px);
-          filter: drop-shadow(10px 0 0 #ff00ff) drop-shadow(-10px 0 0 #00ffff);
+          transform: skewX(60deg) translateX(-100vw);
+          filter: saturate(500%) hue-rotate(180deg);
         }
-        20% {
-          opacity: 0.5;
-          transform: skewX(20deg) translateX(30px);
-          filter: drop-shadow(-10px 0 0 #ff00ff) drop-shadow(10px 0 0 #00ffff);
+        15% {
+          opacity: 1;
+          transform: skewX(-50deg) translateX(100px);
+          filter: drop-shadow(-30px 0 0 #ff00ff) drop-shadow(30px 0 0 #00ffff);
         }
-        40% {
-          opacity: 0.8;
-          transform: skewX(-10deg) translateX(-10px);
+        30% {
+          transform: skewX(40deg) translateX(-50px);
+          filter: drop-shadow(30px 0 0 #ff00ff) drop-shadow(-30px 0 0 #00ffff)
+            invert(1);
+        }
+        45% {
+          transform: skewX(-30deg) translateX(30px);
+          filter: invert(0) brightness(200%);
         }
         60% {
-          transform: skewX(5deg) translateX(5px);
+          transform: skewX(15deg) translateX(-15px) scaleY(1.3);
+          filter: hue-rotate(90deg);
+        }
+        80% {
+          transform: skewX(-5deg) translateX(5px) scaleY(0.8);
         }
         100% {
           opacity: 1;
-          transform: skewX(0) translateX(0);
+          transform: skewX(0) translateX(0) scaleY(1);
           filter: none;
         }
       }
@@ -110,23 +134,35 @@
 
       #contact.active {
         display: block;
-        animation: radarSweep 0.7s ease-out forwards;
+        animation: sonarPulseBurst 0.8s ease-out forwards;
       }
 
-      @keyframes radarSweep {
+      @keyframes sonarPulseBurst {
         0% {
           opacity: 0;
-          transform: scale(0.5);
-          filter: drop-shadow(0 0 50px #45a29e) blur(10px);
+          transform: scale(0);
+          filter: drop-shadow(0 0 100px #66fcf1) brightness(400%);
+        }
+        25% {
+          opacity: 1;
+          transform: scale(1.3);
+          filter: drop-shadow(0 0 80px #ff00ff) brightness(300%)
+            hue-rotate(90deg);
         }
         50% {
-          opacity: 0.8;
-          transform: scale(1.05);
-          filter: drop-shadow(0 0 20px #66fcf1) blur(2px);
+          transform: scale(0.8);
+          filter: drop-shadow(0 0 120px #00ffff) brightness(400%)
+            hue-rotate(180deg);
+        }
+        70% {
+          transform: scale(1.1) rotate(2deg);
+          filter: drop-shadow(0 0 40px #ffff00) saturate(300%);
+        }
+        85% {
+          transform: scale(0.95) rotate(-2deg);
         }
         100% {
-          opacity: 1;
-          transform: scale(1);
+          transform: scale(1) rotate(0);
           filter: none;
         }
       }
@@ -134,18 +170,31 @@
 
       #login.active {
         display: block;
-        animation: dataStreamIn 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+        animation: warpSpeedIn 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275)
+          forwards;
       }
 
-      @keyframes dataStreamIn {
+      @keyframes warpSpeedIn {
         0% {
           opacity: 0;
-          transform: translateX(100vw) skewX(-30deg) scaleX(2);
-          filter: drop-shadow(-20px 0 10px #9d00ff);
+          transform: translateX(200vw) scaleX(5);
+          filter: blur(20px) drop-shadow(-50px 0 20px #9d00ff) saturate(500%);
+        }
+        35% {
+          opacity: 1;
+          transform: translateX(-100px) scaleX(0.4);
+          filter: blur(0px) drop-shadow(50px 0 20px #00ffff) hue-rotate(180deg);
+        }
+        55% {
+          transform: translateX(50px) scaleX(1.5);
+          filter: drop-shadow(-30px 0 10px #ffff00) brightness(200%);
+        }
+        75% {
+          transform: translateX(-20px) scaleX(0.8);
+          filter: hue-rotate(90deg);
         }
         100% {
-          opacity: 1;
-          transform: translateX(0) skewX(0) scaleX(1);
+          transform: translateX(0) scaleX(1);
           filter: none;
         }
       }
@@ -153,20 +202,34 @@
 
       #register.active {
         display: block;
-        animation: coreExplodeIn 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275)
-          forwards;
+        animation: nuclearMeltdown 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
       }
 
-      @keyframes coreExplodeIn {
+      @keyframes nuclearMeltdown {
         0% {
           opacity: 0;
-          transform: scale(2);
-          filter: brightness(300%) blur(20px) drop-shadow(0 0 50px #ff00ff);
+          transform: scale(3) rotate(20deg);
+          filter: brightness(600%) contrast(400%) drop-shadow(0 0 150px red);
+        }
+        20% {
+          opacity: 1;
+          transform: scale(0.7) rotate(-15deg);
+          filter: brightness(300%) drop-shadow(0 0 80px blue) hue-rotate(90deg);
+        }
+        40% {
+          transform: scale(1.2) rotate(10deg) translate(20px, 20px);
+          filter: brightness(400%) drop-shadow(0 0 80px lime) invert(1);
+        }
+        60% {
+          transform: scale(0.9) rotate(-5deg) translate(-20px, -20px);
+          filter: invert(0) saturate(500%);
+        }
+        80% {
+          transform: scale(1.05) translate(10px, -10px);
         }
         100% {
-          opacity: 1;
-          transform: scale(1);
-          filter: brightness(100%) blur(0);
+          transform: scale(1) rotate(0) translate(0, 0);
+          filter: none;
         }
       }
       /* ================= GIAO DIỆN COMPONENT ================= */
@@ -366,6 +429,59 @@
         transform: translateY(-2px);
         color: #000;
       }
+      /* ================= GIỎ HÀNG (CART UI) ================= */
+
+      .cart-item {
+        background: rgba(31, 40, 51, 0.8);
+        border: 1px solid rgba(102, 252, 241, 0.2);
+        border-radius: 8px;
+        margin-bottom: 12px;
+        padding: 12px;
+        transition: 0.3s;
+      }
+
+      .cart-item:hover {
+        border-color: #66fcf1;
+        box-shadow: 0 0 10px rgba(102, 252, 241, 0.2);
+      }
+
+      .cart-item img {
+        width: 60px;
+        height: 60px;
+        object-fit: cover;
+        border-radius: 5px;
+        border: 1px solid #45a29e;
+      }
+
+      .qty-btn {
+        background: #0b0c10;
+        color: #66fcf1;
+        border: 1px solid #45a29e;
+        width: 28px;
+        height: 28px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: bold;
+      }
+
+      .qty-btn:hover {
+        background: #66fcf1;
+        color: #000;
+      }
+
+      .btn-remove-item {
+        color: #dc3545;
+        cursor: pointer;
+        transition: 0.2s;
+      }
+
+      .btn-remove-item:hover {
+        color: #ff4d4d;
+        filter: drop-shadow(0 0 5px red);
+      }
       /* ================= HIỆU ỨNG TAB SẢN PHẨM ================= */
 
       .tab-pane.fade {
@@ -377,25 +493,36 @@
       .tab-pane.active.show {
         display: block;
       }
-      /* Tab 1: Laptop - Holographic Overdrive */
 
       #v-pills-laptop.active.show {
-        animation: holoOverdrive 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+        animation: holoExtreme 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94)
           forwards;
         transform-origin: center center;
       }
 
-      @keyframes holoOverdrive {
+      @keyframes holoExtreme {
         0% {
           opacity: 0;
-          transform: scale3d(2, 0.1, 1) translateY(-50px) skewX(30deg);
-          filter: hue-rotate(180deg) saturate(300%)
-            drop-shadow(15px 15px 0px #ff00ff) blur(10px);
+          transform: scale3d(3, 0.1, 1) translateY(-100px) skewX(40deg);
+          filter: hue-rotate(270deg) saturate(500%)
+            drop-shadow(20px 20px 0px #ff00ff)
+            drop-shadow(-20px -20px 0px #00ffff) blur(15px);
+        }
+        25% {
+          opacity: 0.8;
+          transform: scale3d(0.8, 1.5, 1) translateY(50px) skewX(-30deg);
+          filter: hue-rotate(180deg) saturate(400%)
+            drop-shadow(-15px -15px 0px #ff00ff)
+            drop-shadow(15px 15px 0px #00ffff) blur(8px);
         }
         50% {
           opacity: 1;
-          transform: scale3d(0.95, 0.95, 1) translateY(-5px) skewX(5deg);
-          filter: hue-rotate(45deg) saturate(150%) blur(1px);
+          transform: scale3d(1.1, 0.8, 1) translateY(-20px) skewX(20deg);
+          filter: hue-rotate(90deg) saturate(300%) invert(1);
+        }
+        75% {
+          transform: scale3d(0.95, 1.05, 1) translateY(10px) skewX(-10deg);
+          filter: invert(0) blur(2px);
         }
         100% {
           opacity: 1;
@@ -403,95 +530,139 @@
           filter: none;
         }
       }
-      /* Tab 2: PC - 3D Matrix Decode */
 
       #v-pills-pc {
-        perspective: 1000px;
+        perspective: 1200px;
       }
 
       #v-pills-pc.active.show {
-        animation: matrixDecode 0.7s ease-out forwards;
+        animation: matrixDecodeExtreme 0.8s ease-out forwards;
         transform-style: preserve-3d;
       }
 
-      @keyframes matrixDecode {
+      @keyframes matrixDecodeExtreme {
         0% {
           opacity: 0;
-          transform: rotateX(-90deg) translateZ(-200px);
-          filter: drop-shadow(0 20px 30px #198754);
+          transform: rotateX(-120deg) rotateY(45deg) translateZ(-500px);
+          filter: drop-shadow(0 50px 50px #198754) brightness(300%);
         }
-        60% {
-          opacity: 0.8;
-          transform: rotateX(20deg) translateZ(50px);
+        30% {
+          opacity: 1;
+          transform: rotateX(60deg) rotateY(-30deg) translateZ(200px);
+          filter: hue-rotate(90deg) drop-shadow(0 -30px 50px lime);
+        }
+        55% {
+          transform: rotateX(-30deg) rotateY(15deg) translateZ(-100px);
+          filter: hue-rotate(180deg) invert(1);
+        }
+        80% {
+          transform: rotateX(15deg) rotateY(-5deg) translateZ(50px);
+          filter: invert(0);
         }
         100% {
           opacity: 1;
-          transform: rotateX(0deg) translateZ(0);
+          transform: rotateX(0deg) rotateY(0deg) translateZ(0);
           filter: none;
         }
       }
-      /* Tab 3: Điện thoại - Trượt giáng lâm (Cyber Drop) */
 
       #v-pills-phone.active.show {
-        animation: neonSlideDown 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55)
+        animation: neonCrushBounce 0.7s cubic-bezier(0.28, 0.84, 0.42, 1)
           forwards;
       }
 
-      @keyframes neonSlideDown {
+      @keyframes neonCrushBounce {
         0% {
           opacity: 0;
-          transform: translateY(-80px);
-          filter: drop-shadow(0 -30px 10px #ffc107) blur(5px);
+          transform: translateY(-150px) scaleY(1.5) scaleX(0.8);
+          filter: drop-shadow(0 -50px 20px #ffc107) saturate(400%);
         }
-        100% {
+        30% {
           opacity: 1;
-          transform: translateY(0);
-          filter: none;
-        }
-      }
-      /* Tab 4: Gear - Vút bóng ma đỏ (Glitch Whip) */
-
-      #v-pills-gear.active.show {
-        animation: glitchWhip 0.6s ease-out forwards;
-      }
-
-      @keyframes glitchWhip {
-        0% {
-          opacity: 0;
-          transform: translateX(150px) rotate(5deg) scaleY(1.5);
-          filter: drop-shadow(-30px 0 0 #dc3545) blur(4px);
+          transform: translateY(50px) scaleY(0.4) scaleX(1.3);
+          filter: drop-shadow(0 50px 20px #ff5722) brightness(200%);
         }
         50% {
-          opacity: 1;
-          transform: translateX(-20px) rotate(-2deg) scaleY(0.9);
-          filter: drop-shadow(10px 0 0 rgba(220, 53, 69, 0.5));
+          transform: translateY(-30px) scaleY(1.2) scaleX(0.9);
+          filter: hue-rotate(90deg);
+        }
+        75% {
+          transform: translateY(15px) scaleY(0.8) scaleX(1.1);
         }
         100% {
           opacity: 1;
-          transform: translateX(0) rotate(0) scaleY(1);
+          transform: translateY(0) scaleY(1) scaleX(1);
           filter: none;
         }
       }
-      /* Tab 5: Linh Kiện - Hội tụ tia sáng xanh */
+
+      #v-pills-gear.active.show {
+        animation: glitchWhipExtreme 0.7s ease-out forwards;
+      }
+
+      @keyframes glitchWhipExtreme {
+        0% {
+          opacity: 0;
+          transform: translateX(300px) rotate(15deg) scaleY(2) skewX(-30deg);
+          filter: drop-shadow(-50px 0 0 #dc3545) drop-shadow(-100px 0 0 blue)
+            blur(10px);
+        }
+        35% {
+          opacity: 1;
+          transform: translateX(-80px) rotate(-10deg) scaleY(0.5) skewX(20deg);
+          filter: drop-shadow(50px 0 0 #dc3545) drop-shadow(100px 0 0 cyan)
+            brightness(300%);
+        }
+        60% {
+          transform: translateX(40px) rotate(5deg) scaleY(1.3) skewX(-10deg);
+          filter: invert(1);
+        }
+        80% {
+          transform: translateX(-15px) rotate(-2deg) scaleY(0.9) skewX(5deg);
+          filter: invert(0);
+        }
+        100% {
+          opacity: 1;
+          transform: translateX(0) rotate(0) scaleY(1) skewX(0);
+          filter: none;
+        }
+      }
 
       #v-pills-lk.active.show {
-        animation: bluePulseIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275)
+        animation: rgbPulseBounce 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275)
           forwards;
       }
 
-      @keyframes bluePulseIn {
+      @keyframes rgbPulseBounce {
         0% {
           opacity: 0;
-          transform: scale(0.7);
-          filter: drop-shadow(0 0 60px #0d6efd) brightness(200%);
+          transform: scale(0.2);
+          filter: drop-shadow(0 0 100px #0d6efd) brightness(400%)
+            hue-rotate(0deg);
+        }
+        25% {
+          opacity: 1;
+          transform: scale(1.4);
+          filter: drop-shadow(0 0 80px #ff00ff) brightness(300%)
+            hue-rotate(90deg);
+        }
+        50% {
+          transform: scale(0.8);
+          filter: drop-shadow(0 0 60px #ffff00) brightness(400%)
+            hue-rotate(180deg);
+        }
+        75% {
+          transform: scale(1.1);
+          filter: drop-shadow(0 0 40px #00ff00) hue-rotate(270deg);
         }
         100% {
           opacity: 1;
           transform: scale(1);
-          filter: drop-shadow(0 0 0 transparent) brightness(100%);
+          filter: drop-shadow(0 0 0 transparent) brightness(100%)
+            hue-rotate(360deg);
         }
       }
-      /* ================= LIÊN HỆ, ĐĂNG NHẬP, ĐĂNG KÝ CSS ================= */
+      /* ================= FORM UI ================= */
 
       .contact-card {
         background: #1f2833;
@@ -631,6 +802,15 @@
         padding: 15px;
         border-radius: 8px;
       }
+      /* CSS cho Modal QR Code */
+
+      .cyber-modal {
+        background: rgba(11, 12, 16, 0.95);
+        backdrop-filter: blur(15px);
+        border: 2px solid rgba(102, 252, 241, 0.5);
+        border-radius: 15px;
+        box-shadow: 0 0 30px rgba(102, 252, 241, 0.2);
+      }
     </style>
   </head>
 
@@ -656,7 +836,7 @@
           <span class="navbar-toggler-icon" style="filter: invert(1)"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto gap-3">
+          <ul class="navbar-nav ms-auto gap-3 align-items-lg-center">
             <li class="nav-item">
               <a
                 class="nav-link cyber-link active-nav"
@@ -685,10 +865,122 @@
                 ><i class="bi bi-box-arrow-in-right"></i> Đăng Nhập</a
               >
             </li>
+            <li class="nav-item ms-lg-3">
+              <button
+                class="btn btn-outline-info position-relative rounded-pill px-3"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#cartOffcanvas"
+              >
+                <i class="bi bi-cart3"></i> Giỏ hàng
+                <span
+                  id="cart-badge"
+                  class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                  style="display: none"
+                >
+                  0
+                </span>
+              </button>
+            </li>
           </ul>
         </div>
       </div>
     </nav>
+
+    <div
+      class="offcanvas offcanvas-end cyber-navbar text-light"
+      tabindex="-1"
+      id="cartOffcanvas"
+      style="border-left: 1px solid #66fcf1; width: 400px"
+    >
+      <div class="offcanvas-header border-bottom border-secondary">
+        <h5 class="offcanvas-title fw-bold" style="color: #66fcf1">
+          <i class="bi bi-cart4 me-2"></i>GIỎ HÀNG CỦA BẠN
+        </h5>
+        <button
+          type="button"
+          class="btn-close btn-close-white"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body d-flex flex-column">
+        <div id="cart-items" class="flex-grow-1 overflow-auto pe-2"></div>
+
+        <div class="border-top border-secondary pt-3 mt-3">
+          <div class="d-flex justify-content-between mb-3">
+            <span class="fs-5 text-secondary">Tổng thanh toán:</span>
+            <span class="fs-4 fw-bold text-warning" id="cart-total">0₫</span>
+          </div>
+          <button
+            class="btn btn-hero w-100 py-3 fs-6 rounded-3"
+            onclick="checkout()"
+          >
+            TIẾN HÀNH THANH TOÁN
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="qrModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content cyber-modal">
+          <div class="modal-header border-bottom border-secondary">
+            <h5 class="modal-title text-info fw-bold">
+              <i class="bi bi-qr-code-scan me-2"></i> QUÉT MÃ THANH TOÁN
+            </h5>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body text-center py-4">
+            <p class="text-secondary mb-4">
+              Vui lòng quét mã QR bên dưới bằng ứng dụng ngân hàng hoặc MoMo để
+              hoàn tất giao dịch.
+            </p>
+
+            <div
+              class="qr-container p-3 mb-3 d-inline-block rounded-3"
+              style="
+                background: white;
+                border: 2px solid #66fcf1;
+                box-shadow: 0 0 20px rgba(102, 252, 241, 0.3);
+              "
+            >
+              <img
+                src="maqr.jpg"
+                alt="QR Code Ngân Hàng"
+                width="200"
+                height="200"
+              />
+            </div>
+
+            <h4 class="text-warning fw-bold mt-2" id="qr-total-amount">0₫</h4>
+            <p class="small text-info mt-2 mb-0">
+              Nội dung CK:
+              <span
+                class="fw-bold text-light"
+                style="font-size: 1.1rem; border-bottom: 1px dashed #66fcf1"
+                >THANHTHO <span id="random-order-id"></span
+              ></span>
+            </p>
+          </div>
+          <div
+            class="modal-footer border-top border-secondary justify-content-center"
+          >
+            <button
+              type="button"
+              class="btn btn-hero w-100"
+              onclick="confirmPayment()"
+            >
+              XÁC NHẬN ĐÃ CHUYỂN KHOẢN
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <div id="home" class="page-section active">
       <div class="container mt-4">
@@ -697,9 +989,10 @@
             <div class="col-md-6 mb-4 mb-md-0 z-1">
               <span
                 class="badge bg-dark border border-secondary text-light mb-3 px-3 py-2 rounded-pill"
-                ><i class="bi bi-lightning-charge-fill text-warning"></i> Thế hệ
-                mới 2026</span
               >
+                <i class="bi bi-lightning-charge-fill text-warning"></i> Thế hệ
+                mới 2026
+              </span>
               <h1 class="hero-title">
                 Định Hình<br /><span class="text-gradient">Tương Lai</span> Công
                 Nghệ.
@@ -1283,14 +1576,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-      // Mẹo ép trình duyệt chạy lại animation CSS: gỡ bỏ class xong gắn lại ngay lập tức
+      // Navigation
       function switchPage(pageId, navItem = null) {
         const allPages = document.querySelectorAll(".page-section");
         allPages.forEach((sec) => sec.classList.remove("active"));
-
-        // Ép trình duyệt "quên" DOM cũ để reset hiệu ứng animation
         void document.getElementById(pageId).offsetWidth;
-
         document.getElementById(pageId).classList.add("active");
 
         if (navItem) {
@@ -1299,12 +1589,10 @@
             .forEach((link) => link.classList.remove("active-nav"));
           navItem.classList.add("active-nav");
         }
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth",
-        });
+        window.scrollTo({ top: 0, behavior: "smooth" });
       }
 
+      // Database - Expanded to 8 unique items per category
       const db = {
         laptops: [
           {
@@ -1335,6 +1623,34 @@
             Badge: "NEW",
             Img: "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?q=80&w=400",
           },
+          {
+            Name: "MSI Titan 18 HX",
+            Specs: "Core i9 14900HX | RTX 4090 | 128GB",
+            Price: "135.000.000₫",
+            Badge: "FLAGSHIP",
+            Img: "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?q=80&w=400",
+          },
+          {
+            Name: "Razer Blade 16",
+            Specs: "Core i9 13950HX | RTX 4080 | Mini-LED",
+            Price: "95.500.000₫",
+            Badge: "",
+            Img: "https://images.unsplash.com/photo-1531297172868-ee1cb88f2402?q=80&w=400",
+          },
+          {
+            Name: "Alienware m18 R2",
+            Specs: "Ryzen 9 7945HX | RTX 4080 | 32GB",
+            Price: "88.000.000₫",
+            Badge: "SALE",
+            Img: "https://images.unsplash.com/photo-1555680202-c86f0e12f086?q=80&w=400",
+          },
+          {
+            Name: "Gigabyte AORUS 17X",
+            Specs: "Core i9 13980HX | RTX 4090 | 240Hz",
+            Price: "102.000.000₫",
+            Badge: "",
+            Img: "https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?q=80&w=400",
+          },
         ],
         pcs: [
           {
@@ -1357,6 +1673,41 @@
             Price: "85.500.000₫",
             Badge: "HOT",
             Img: "https://images.unsplash.com/photo-1563298723-dcfebaa392e3?q=80&w=400",
+          },
+          {
+            Name: "Corsair One i500",
+            Specs: "Core i9 14900K | RTX 4090 | Liquid Cooled",
+            Price: "120.000.000₫",
+            Badge: "COMPACT",
+            Img: "https://images.unsplash.com/photo-1547082299-de196ea013d6?q=80&w=400",
+          },
+          {
+            Name: "Lenovo Legion Tower 7i",
+            Specs: "Core i7 14700K | RTX 4070 Ti Super",
+            Price: "68.990.000₫",
+            Badge: "",
+            Img: "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?q=80&w=400",
+          },
+          {
+            Name: "HP Omen 45L",
+            Specs: "Ryzen 9 7900X | RTX 4080 | Cryo Chamber",
+            Price: "79.000.000₫",
+            Badge: "SALE",
+            Img: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=400",
+          },
+          {
+            Name: "Acer Predator Orion 7000",
+            Specs: "Core i9 13900K | RTX 4090 | 64GB",
+            Price: "115.000.000₫",
+            Badge: "",
+            Img: "https://images.unsplash.com/photo-1593640495253-23196b27a87f?q=80&w=400",
+          },
+          {
+            Name: "ASUS ROG G22CH",
+            Specs: "Core i7 13700F | RTX 4070 | Mini PC",
+            Price: "55.000.000₫",
+            Badge: "NEW",
+            Img: "https://images.unsplash.com/photo-1605236453806-6ff36851218e?q=80&w=400",
           },
         ],
         phones: [
@@ -1381,6 +1732,41 @@
             Badge: "NEW",
             Img: "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?q=80&w=400",
           },
+          {
+            Name: "Google Pixel 8 Pro",
+            Specs: "Tensor G3 | 128GB | Google AI",
+            Price: "22.500.000₫",
+            Badge: "",
+            Img: "https://images.unsplash.com/photo-1598327105666-5b89351aff97?q=80&w=400",
+          },
+          {
+            Name: "Sony Xperia 1 V",
+            Specs: "Camera Exmor T | 256GB | 4K OLED",
+            Price: "26.900.000₫",
+            Badge: "CREATOR",
+            Img: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=400",
+          },
+          {
+            Name: "Asus Zenfone 11 Ultra",
+            Specs: "Snap 8 Gen 3 | 16GB RAM | 5500mAh",
+            Price: "24.000.000₫",
+            Badge: "",
+            Img: "https://images.unsplash.com/photo-1592890288564-76628a30a657?q=80&w=400",
+          },
+          {
+            Name: "Xiaomi 14 Pro",
+            Specs: "Leica Optics | 120W Charge | 512GB",
+            Price: "21.500.000₫",
+            Badge: "SALE",
+            Img: "https://images.unsplash.com/photo-1601784551446-20c9e07cddaf?q=80&w=400",
+          },
+          {
+            Name: "ROG Phone 8 Pro",
+            Specs: "165Hz Matrix Display | 24GB RAM",
+            Price: "28.000.000₫",
+            Badge: "GAMING",
+            Img: "https://images.unsplash.com/photo-1631585489816-c3f3f01c7138?q=80&w=400",
+          },
         ],
         gears: [
           {
@@ -1403,6 +1789,41 @@
             Price: "3.800.000₫",
             Badge: "NEW",
             Img: "https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?q=80&w=400",
+          },
+          {
+            Name: "Phím SteelSeries Apex Pro",
+            Specs: "OmniPoint Switch | Tùy chỉnh lực nhấn",
+            Price: "5.500.000₫",
+            Badge: "PRO",
+            Img: "https://images.unsplash.com/photo-1600080972464-8e5f35f63d08?q=80&w=400",
+          },
+          {
+            Name: "Tai nghe Corsair Virtuoso",
+            Specs: "RGB Wireless XT | High-Fidelity",
+            Price: "6.200.000₫",
+            Badge: "",
+            Img: "https://images.unsplash.com/photo-1585800479155-23c28b5e67c9?q=80&w=400",
+          },
+          {
+            Name: "Webcam Logitech Brio 4K",
+            Specs: "4K HDR | Windows Hello",
+            Price: "4.800.000₫",
+            Badge: "STREAM",
+            Img: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?q=80&w=400",
+          },
+          {
+            Name: "Lót chuột Razer Strider",
+            Specs: "Chống nước | Hybrid Soft/Hard",
+            Price: "1.100.000₫",
+            Badge: "",
+            Img: "https://images.unsplash.com/photo-1610464673896-bc6f85ff21eb?q=80&w=400",
+          },
+          {
+            Name: "Elgato Stream Deck MK.2",
+            Specs: "15 Phím LCD | Thay đổi Faceplate",
+            Price: "3.900.000₫",
+            Badge: "HOT",
+            Img: "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=400",
           },
         ],
         lk: [
@@ -1427,6 +1848,41 @@
             Badge: "",
             Img: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=400",
           },
+          {
+            Name: "Nguồn Corsair RM1000x",
+            Specs: "1000W | 80 Plus Gold | Fully Modular",
+            Price: "4.800.000₫",
+            Badge: "",
+            Img: "https://images.unsplash.com/photo-1555680202-c86f0e12f086?q=80&w=400",
+          },
+          {
+            Name: "Case Lian Li O11 Dynamic",
+            Specs: "Kính cường lực | Mid-Tower EVO",
+            Price: "4.200.000₫",
+            Badge: "BEST BUILD",
+            Img: "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?q=80&w=400",
+          },
+          {
+            Name: "RAM G.Skill Trident Z5",
+            Specs: "64GB (2x32) | DDR5 6400MHz RGB",
+            Price: "6.900.000₫",
+            Badge: "NEW",
+            Img: "https://images.unsplash.com/photo-1562976540-1502c2145186?q=80&w=400",
+          },
+          {
+            Name: "Fan Lian Li UNI SL120",
+            Specs: "Kit 3 Fan | Daisy Chain | ARGB",
+            Price: "2.100.000₫",
+            Badge: "HOT",
+            Img: "https://images.unsplash.com/photo-1628557044797-f21a177c37ec?q=80&w=400",
+          },
+          {
+            Name: "Tản ASUS ROG Ryujin III",
+            Specs: 'AIO 360mm | Màn hình LCD 3.5"',
+            Price: "8.500.000₫",
+            Badge: "",
+            Img: "https://images.unsplash.com/photo-1605236453806-6ff36851218e?q=80&w=400",
+          },
         ],
       };
 
@@ -1441,22 +1897,22 @@
         container.innerHTML = db[category]
           .map(
             (item) => `
-                <div class="col">
-                    <div class="card h-100 tech-card" style="border-color: rgba(${borderColor}, 0.3);">
-                        ${item.Badge ? `<span class="badge ${badgeColor} position-absolute top-0 end-0 m-3 px-3 py-2 rounded-pill shadow">${item.Badge}</span>` : ""}
-                        <img src="${item.Img}" class="card-img-top p-3" alt="${item.Name}">
-                        <div class="card-body text-center pt-0">
-                            <h6 class="card-title text-truncate fw-bold">${item.Name}</h6>
-                            <p class="text-secondary small mb-3">${item.Specs}</p>
-                            <h4 class="${textColor} fw-bold mb-2">${item.Price}</h4>
-                            <div class="product-actions">
-                                <button class="btn btn-sm btn-outline-${textColor.split("-")[1]} fw-bold"><i class="bi bi-cart-plus"></i></button>
-                                <button class="btn btn-sm btn-buy fw-bold text-uppercase">Mua ngay</button>
-                            </div>
+            <div class="col">
+                <div class="card h-100 tech-card" style="border-color: rgba(${borderColor}, 0.3);">
+                    ${item.Badge ? `<span class="badge ${badgeColor} position-absolute top-0 end-0 m-3 px-3 py-2 rounded-pill shadow">${item.Badge}</span>` : ""}
+                    <img src="${item.Img}" class="card-img-top p-3" alt="${item.Name}">
+                    <div class="card-body text-center pt-0">
+                        <h6 class="card-title text-truncate fw-bold">${item.Name}</h6>
+                        <p class="text-secondary small mb-3">${item.Specs}</p>
+                        <h4 class="${textColor} fw-bold mb-2">${item.Price}</h4>
+                        <div class="product-actions">
+                            <button onclick="addToCart('${item.Name}', '${item.Price}', '${item.Img}')" class="btn btn-sm btn-outline-${textColor.split("-")[1]} fw-bold"><i class="bi bi-cart-plus"></i></button>
+                            <button onclick="addToCart('${item.Name}', '${item.Price}', '${item.Img}')" class="btn btn-sm btn-buy fw-bold text-uppercase">Mua ngay</button>
                         </div>
                     </div>
                 </div>
-            `,
+            </div>
+        `,
           )
           .join("");
       }
@@ -1497,7 +1953,150 @@
           "bg-primary",
           "text-primary",
         );
+        updateCartUI();
       };
+
+      /* ================= JAVASCRIPT GIỎ HÀNG (LocalStorage) ================= */
+
+      let cart = JSON.parse(localStorage.getItem("cyberCart")) || [];
+
+      function parsePrice(priceStr) {
+        return parseInt(priceStr.replace(/\./g, "").replace("₫", ""));
+      }
+
+      function formatPrice(priceNum) {
+        return new Intl.NumberFormat("vi-VN", {
+          style: "currency",
+          currency: "VND",
+        })
+          .format(priceNum)
+          .replace("VND", "₫");
+      }
+
+      function addToCart(name, priceStr, img) {
+        const existingItem = cart.find((item) => item.name === name);
+        if (existingItem) {
+          existingItem.qty += 1;
+        } else {
+          cart.push({
+            name: name,
+            price: parsePrice(priceStr),
+            img: img,
+            qty: 1,
+          });
+        }
+        saveCart();
+        updateCartUI();
+        const cartOffcanvas = new bootstrap.Offcanvas(
+          document.getElementById("cartOffcanvas"),
+        );
+        cartOffcanvas.show();
+      }
+
+      function changeQty(index, amount) {
+        cart[index].qty += amount;
+        if (cart[index].qty <= 0) {
+          cart.splice(index, 1);
+        }
+        saveCart();
+        updateCartUI();
+      }
+
+      function removeItem(index) {
+        cart.splice(index, 1);
+        saveCart();
+        updateCartUI();
+      }
+
+      function saveCart() {
+        localStorage.setItem("cyberCart", JSON.stringify(cart));
+      }
+
+      function updateCartUI() {
+        const cartContainer = document.getElementById("cart-items");
+        const badge = document.getElementById("cart-badge");
+        const totalEl = document.getElementById("cart-total");
+
+        cartContainer.innerHTML = "";
+        let totalItems = 0;
+        let totalPrice = 0;
+
+        if (cart.length === 0) {
+          cartContainer.innerHTML =
+            '<p class="text-secondary text-center mt-5"><i class="bi bi-box-seam display-4"></i><br>Khoang chứa trống</p>';
+        } else {
+          cart.forEach((item, index) => {
+            totalItems += item.qty;
+            totalPrice += item.price * item.qty;
+
+            cartContainer.innerHTML += `
+                <div class="cart-item d-flex align-items-center gap-3">
+                <img src="${item.img}" alt="img">
+                <div class="flex-grow-1">
+                    <h6 class="mb-1 text-light fs-6 text-truncate" style="max-width: 180px;">${item.name}</h6>
+                    <div class="text-info fw-bold mb-2" style="font-size: 0.9rem;">${formatPrice(item.price)}</div>
+                    <div class="d-flex align-items-center gap-2">
+                    <button class="qty-btn" onclick="changeQty(${index}, -1)">-</button>
+                    <span class="text-light px-2 fw-bold">${item.qty}</span>
+                    <button class="qty-btn" onclick="changeQty(${index}, 1)">+</button>
+                    </div>
+                </div>
+                <div class="btn-remove-item h4 mb-0" onclick="removeItem(${index})"><i class="bi bi-trash3-fill"></i></div>
+                </div>
+            `;
+          });
+        }
+
+        if (totalItems > 0) {
+          badge.style.display = "inline-block";
+          badge.innerText = totalItems;
+        } else {
+          badge.style.display = "none";
+        }
+        totalEl.innerText = formatPrice(totalPrice);
+      }
+
+      /* ================= JAVASCRIPT THANH TOÁN (QR MODAL) ================= */
+
+      function checkout() {
+        if (cart.length === 0) {
+          alert("Giỏ hàng trống! Vui lòng nạp vũ khí trước khi xuất kích.");
+          return;
+        }
+
+        // Cập nhật thông tin vào Modal QR
+        const totalAmount = document.getElementById("cart-total").innerText;
+        document.getElementById("qr-total-amount").innerText = totalAmount;
+        document.getElementById("random-order-id").innerText = Math.floor(
+          10000 + Math.random() * 90000,
+        ); // Tạo mã 5 số ngẫu nhiên
+
+        // Ẩn giỏ hàng (Offcanvas)
+        bootstrap.Offcanvas.getInstance(
+          document.getElementById("cartOffcanvas"),
+        ).hide();
+
+        // Hiện Modal QR
+        const qrModal = new bootstrap.Modal(document.getElementById("qrModal"));
+        qrModal.show();
+      }
+
+      function confirmPayment() {
+        alert(
+          "Xác nhận hệ thống! Giao dịch đang được xử lý. Cảm ơn bạn đã tin tưởng Thanhtho Corporation.",
+        );
+
+        // Reset giỏ hàng
+        cart = [];
+        saveCart();
+        updateCartUI();
+
+        // Đóng Modal QR
+        bootstrap.Modal.getInstance(document.getElementById("qrModal")).hide();
+
+        // Chuyển về trang chủ
+        switchPage("home");
+      }
     </script>
   </body>
 </html>
